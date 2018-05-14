@@ -23,15 +23,17 @@ use Plinker\Redbean\RedBean as Model;
 
 class Containers extends Lib\Base
 {
+    /*
+     * @var - LXD endpoint
+     */
+    public $endpoint = '/1.0/containers';
+    
     /**
      *
      */
     public function __construct(array $config = array())
     {
-        $this->config = $config;
-
-        // load models
-        $this->model = new Model($this->config['database']);
+        parent::__construct($config, $endpoint);
     }
 
     /**
@@ -39,6 +41,6 @@ class Containers extends Lib\Base
      */
     public function list($remote = '', $mutator = null)
     {
-        return $this->query($remote.':/1.0/containers', 'GET', [], $mutator);
+        return $this->query($remote.':'.$this->endpoint, 'GET', [], $mutator);
     }
 }

@@ -23,15 +23,34 @@ use Plinker\Redbean\RedBean as Model;
 
 class Base
 {
+    /*
+     * @var - Component config
+     */
+    public $config = [];
+    
+    /*
+     * @var - Plinker\Redbean\RedBean
+     */
+    public $model;
+    
+    /*
+     * @var - LXD endpoint
+     */
+    public $endpoint = '/1.0';
+    
     /**
      *
      */
-    public function __construct(array $config = array())
+    public function __construct(array $config = [], $endpoint = '/1.0')
     {
+        // set config
         $this->config = $config;
 
         // load models
         $this->model = new Model($this->config['database']);
+        
+        // set endpoint
+        $this->endpoint = $baseEndpoint;
     }
     
     /**
@@ -132,5 +151,54 @@ class Base
         }
         
         throw new \Exception("Could not execute: sudo /usr/bin/lxc query -X $action $data $remote", $status_code);
+    }
+    
+    /**
+     *
+     */
+    public function list()
+    {
+    }
+
+    /**
+     *
+     */
+    public function info()
+    {
+    }
+
+    /**
+     *
+     */
+    public function create()
+    {
+    }
+
+    /**
+     *
+     */
+    public function replace()
+    {
+    }
+
+    /**
+     *
+     */
+    public function update()
+    {
+    }
+
+    /**
+     *
+     */
+    public function rename()
+    {
+    }
+    
+    /**
+     *
+     */
+    public function delete()
+    {
     }
 }
