@@ -154,6 +154,33 @@ class Base
     }
     
     /**
+     * Local - execute a local command, E.G: lxc list --format="json"
+     */
+    public function local($cmd = '', $mutator = null)
+    {
+        exec("sudo /usr/bin/$cmd", $output, $status_code);
+        
+        // cmd executed successfully, decode json into an array or return as-is
+        if ($status_code === 0) {
+            try {
+                $output = implode("\n", $output);
+                $return = $this->json_validate($output, true);
+            } catch (\Exception $e) {
+                return $output;
+            }
+            
+            // run mutation if not null
+            if ($mutator !== null) {
+                $return = $mutator($return);
+            }
+            
+            return $return;
+        }
+        
+        throw new \Exception("Could not execute: sudo /usr/bin/$cmd", $status_code);
+    }
+    
+    /**
      *
      */
     public function list()

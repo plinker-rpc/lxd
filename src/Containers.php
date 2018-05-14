@@ -31,7 +31,7 @@ class Containers extends Lib\Base
     /**
      *
      */
-    public function __construct(array $config = array())
+    public function __construct(array $config = [])
     {
         parent::__construct($config, '/1.0/containers');
     }
@@ -39,10 +39,8 @@ class Containers extends Lib\Base
     /**
      *
      */
-    public function list($remote = '', $mutator = null)
+    public function list($remote = 'local', $mutator = null)
     {
-        print_r($this->endpoint);
-        
         return $this->query($remote.':'.$this->endpoint, 'GET', [], $mutator);
     }
 }
