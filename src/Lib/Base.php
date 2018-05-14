@@ -26,7 +26,7 @@ class Base
     /*
      * @var - Component config
      */
-    public $config = [];
+    public $config;
     
     /*
      * @var - Plinker\Redbean\RedBean
@@ -36,7 +36,7 @@ class Base
     /*
      * @var - LXD endpoint
      */
-    public $endpoint = '/1.0';
+    public $endpoint;
     
     /**
      *
@@ -50,7 +50,7 @@ class Base
         $this->model = new Model($this->config['database']);
         
         // set endpoint
-        $this->endpoint = $baseEndpoint;
+        $this->endpoint = $endpoint;
     }
     
     /**

@@ -24,16 +24,16 @@ use Plinker\Redbean\RedBean as Model;
 class Containers extends Lib\Base
 {
     /*
-     * @var - LXD endpoint
+     * @var - LXD endpoint (set by base)
      */
-    public $endpoint = '/1.0/containers';
+    public $endpoint;
     
     /**
      *
      */
     public function __construct(array $config = array())
     {
-        parent::__construct($config, $endpoint);
+        parent::__construct($config, '/1.0/containers');
     }
 
     /**
@@ -41,6 +41,8 @@ class Containers extends Lib\Base
      */
     public function list($remote = '', $mutator = null)
     {
+        print_r($this->endpoint);
+        
         return $this->query($remote.':'.$this->endpoint, 'GET', [], $mutator);
     }
 }
