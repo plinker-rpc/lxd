@@ -553,7 +553,7 @@ fetch them.</p>
 </tr>
 </tbody>
 </table>
-<div class="codehilite"><pre><span></span><span class="x">$client-&gt;lxc-&gt;containers-&gt;files-&gt;list(&#39;local&#39;, &#39;container-name&#39;, &#39;/&#39;);</span>
+<div class="codehilite"><pre><span></span><span class="x">$client-&gt;lxd-&gt;containers-&gt;files-&gt;list(&#39;local&#39;, &#39;container-name&#39;, &#39;/&#39;);</span>
 </pre></div>
 
 
@@ -628,10 +628,10 @@ fetch them.</p>
     All files are uploaded as uid/gid root user.
 </em></p>
 <div class="codehilite"><pre><span></span><span class="x">// single file</span>
-<span class="x">$client-&gt;lxc-&gt;containers-&gt;files-&gt;push(&#39;local&#39;, &#39;my-container&#39;, &#39;/local/path/to/file.ext&#39;, &#39;/path/to/file.ext&#39;);</span>
+<span class="x">$client-&gt;lxd-&gt;containers-&gt;files-&gt;push(&#39;local&#39;, &#39;my-container&#39;, &#39;/local/path/to/file.ext&#39;, &#39;/path/to/file.ext&#39;);</span>
 
 <span class="x">// entire directory</span>
-<span class="x">$client-&gt;lxc-&gt;containers-&gt;files-&gt;push(&#39;local&#39;, &#39;my-container&#39;, &#39;/local/path/to/folder&#39;, &#39;/path/to/folder&#39;);</span>
+<span class="x">$client-&gt;lxd-&gt;containers-&gt;files-&gt;push(&#39;local&#39;, &#39;my-container&#39;, &#39;/local/path/to/folder&#39;, &#39;/path/to/folder&#39;);</span>
 </pre></div>
 
 
@@ -676,7 +676,7 @@ to use that in future.</p>
 </tr>
 </tbody>
 </table>
-<div class="codehilite"><pre><span></span><span class="x">$client-&gt;lxc-&gt;containers-&gt;files-&gt;pull(&#39;local&#39;, &#39;my-container&#39;, &#39;/path/to/file&#39;);</span>
+<div class="codehilite"><pre><span></span><span class="x">$client-&gt;lxd-&gt;containers-&gt;files-&gt;pull(&#39;local&#39;, &#39;my-container&#39;, &#39;/path/to/file&#39;);</span>
 </pre></div>
 
 

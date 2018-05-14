@@ -594,7 +594,7 @@
 </tr>
 </tbody>
 </table>
-<div class="codehilite"><pre><span></span><span class="x">$client-&gt;lxc-&gt;images-&gt;aliases-&gt;list(&#39;local&#39;);</span>
+<div class="codehilite"><pre><span></span><span class="nx">$client</span><span class="o">-&gt;</span><span class="nx">lxc</span><span class="o">-&gt;</span><span class="nx">images</span><span class="o">-&gt;</span><span class="nx">aliases</span><span class="o">-&gt;</span><span class="nx">list</span><span class="p">(</span><span class="s1">&#39;local&#39;</span><span class="p">);</span>
 </pre></div>
 
 
@@ -638,7 +638,7 @@
 </tr>
 </tbody>
 </table>
-<div class="codehilite"><pre><span></span><span class="x">$client-&gt;lxc-&gt;images-&gt;aliases-&gt;info(&#39;local&#39;, &#39;alias-name&#39;);</span>
+<div class="codehilite"><pre><span></span><span class="nx">$client</span><span class="o">-&gt;</span><span class="nx">lxc</span><span class="o">-&gt;</span><span class="nx">images</span><span class="o">-&gt;</span><span class="nx">aliases</span><span class="o">-&gt;</span><span class="nx">info</span><span class="p">(</span><span class="s1">&#39;local&#39;</span><span class="p">,</span> <span class="s1">&#39;alias-name&#39;</span><span class="p">);</span>
 </pre></div>
 
 
@@ -684,11 +684,11 @@
 </tr>
 </tbody>
 </table>
-<div class="codehilite"><pre><span></span><span class="x">$client-&gt;lxc-&gt;images-&gt;aliases-&gt;create(&#39;local&#39;, [</span>
-<span class="x">    &quot;description&quot; =&gt; &quot;The alias description&quot;,</span>
-<span class="x">    &quot;target&quot; =&gt; &quot;&lt;image fingerprint&gt;&quot;,</span>
-<span class="x">    &quot;name&quot; =&gt; &quot;alias-name&quot;</span>
-<span class="x">]);</span>
+<div class="codehilite"><pre><span></span><span class="nx">$client</span><span class="o">-&gt;</span><span class="nx">lxc</span><span class="o">-&gt;</span><span class="nx">images</span><span class="o">-&gt;</span><span class="nx">aliases</span><span class="o">-&gt;</span><span class="nx">create</span><span class="p">(</span><span class="s1">&#39;local&#39;</span><span class="p">,</span> <span class="p">[</span>
+    <span class="s2">&quot;description&quot;</span> <span class="p">=&gt;</span> <span class="s2">&quot;The alias description&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;target&quot;</span> <span class="p">=&gt;</span> <span class="s2">&quot;&lt;image fingerprint&gt;&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;name&quot;</span> <span class="p">=&gt;</span> <span class="s2">&quot;alias-name&quot;</span>
+<span class="p">]);</span>
 </pre></div>
 
 
@@ -738,10 +738,10 @@
 </tr>
 </tbody>
 </table>
-<div class="codehilite"><pre><span></span><span class="x">$client-&gt;lxc-&gt;images-&gt;aliases-&gt;replace(&#39;local&#39;, &#39;alias-name&#39;, [</span>
-<span class="x">    &quot;description&quot; =&gt; &quot;New description&quot;,</span>
-<span class="x">    &quot;target&quot; =&gt; &quot;&lt;image fingerprint&gt;&quot;</span>
-<span class="x">]);</span>
+<div class="codehilite"><pre><span></span><span class="nx">$client</span><span class="o">-&gt;</span><span class="nx">lxc</span><span class="o">-&gt;</span><span class="nx">images</span><span class="o">-&gt;</span><span class="nx">aliases</span><span class="o">-&gt;</span><span class="nx">replace</span><span class="p">(</span><span class="s1">&#39;local&#39;</span><span class="p">,</span> <span class="s1">&#39;alias-name&#39;</span><span class="p">,</span> <span class="p">[</span>
+    <span class="s2">&quot;description&quot;</span> <span class="p">=&gt;</span> <span class="s2">&quot;New description&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;target&quot;</span> <span class="p">=&gt;</span> <span class="s2">&quot;&lt;image fingerprint&gt;&quot;</span>
+<span class="p">]);</span>
 </pre></div>
 
 
@@ -791,10 +791,10 @@
 </tr>
 </tbody>
 </table>
-<div class="codehilite"><pre><span></span><span class="x">$client-&gt;lxc-&gt;images-&gt;aliases-&gt;update(&#39;local&#39;, &#39;alias-name&#39;, [</span>
-<span class="x">    &quot;description&quot; =&gt; &quot;New description&quot;,</span>
-<span class="x">    &quot;target&quot; =&gt; &quot;&lt;image fingerprint&gt;&quot;</span>
-<span class="x">]);</span>
+<div class="codehilite"><pre><span></span><span class="nx">$client</span><span class="o">-&gt;</span><span class="nx">lxd</span><span class="o">-&gt;</span><span class="nx">images</span><span class="o">-&gt;</span><span class="nx">aliases</span><span class="o">-&gt;</span><span class="nx">update</span><span class="p">(</span><span class="s1">&#39;local&#39;</span><span class="p">,</span> <span class="s1">&#39;alias-name&#39;</span><span class="p">,</span> <span class="p">[</span>
+    <span class="s2">&quot;description&quot;</span> <span class="p">=&gt;</span> <span class="s2">&quot;New description&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;target&quot;</span> <span class="p">=&gt;</span> <span class="s2">&quot;&lt;image fingerprint&gt;&quot;</span>
+<span class="p">]);</span>
 </pre></div>
 
 
@@ -844,9 +844,9 @@
 </tr>
 </tbody>
 </table>
-<div class="codehilite"><pre><span></span><span class="x">$client-&gt;lxc-&gt;images-&gt;aliases-&gt;rename(&#39;local&#39;, &#39;alias-name&#39;, [</span>
-<span class="x">    &quot;name&quot;: &quot;new-name&quot;</span>
-<span class="x">]);</span>
+<div class="codehilite"><pre><span></span><span class="nx">$client</span><span class="o">-&gt;</span><span class="nx">lxd</span><span class="o">-&gt;</span><span class="nx">images</span><span class="o">-&gt;</span><span class="nx">aliases</span><span class="o">-&gt;</span><span class="nx">rename</span><span class="p">(</span><span class="s1">&#39;local&#39;</span><span class="p">,</span> <span class="s1">&#39;alias-name&#39;</span><span class="p">,</span> <span class="p">[</span>
+    <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;new-name&quot;</span>
+<span class="p">]);</span>
 </pre></div>
 
 
@@ -890,7 +890,7 @@
 </tr>
 </tbody>
 </table>
-<div class="codehilite"><pre><span></span><span class="x">$client-&gt;lxc-&gt;images-&gt;aliases-&gt;delete(&#39;local&#39;, &#39;alias-name&#39;);</span>
+<div class="codehilite"><pre><span></span><span class="nx">$client</span><span class="o">-&gt;</span><span class="nx">lxd</span><span class="o">-&gt;</span><span class="nx">images</span><span class="o">-&gt;</span><span class="nx">aliases</span><span class="o">-&gt;</span><span class="k">delete</span><span class="p">(</span><span class="s1">&#39;local&#39;</span><span class="p">,</span> <span class="s1">&#39;alias-name&#39;</span><span class="p">);</span>
 </pre></div>
 
 
