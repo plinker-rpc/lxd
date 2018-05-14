@@ -11,7 +11,6 @@ class LxdTest extends TestCase
      */
     public function setUp()
     {
-
     }
 
     /**
@@ -21,5 +20,4 @@ class LxdTest extends TestCase
     {
         $this->assertTrue(true);
     }
-
 }
