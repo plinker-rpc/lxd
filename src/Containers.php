@@ -37,8 +37,8 @@ class Containers extends Lib\Base
     /**
      *
      */
-    public function list($remote = '')
+    public function list($remote = '', $mutator = null)
     {
-        return $this->query($remote.':/1.0/containers', 'GET', []);
+        return $this->query($remote.':/1.0/containers', 'GET', [], $mutator);
     }
 }

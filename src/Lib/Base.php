@@ -122,6 +122,12 @@ class Base
             } catch (\Exception $e) {
                 return $output;
             }
+            
+            // run mutation if not null
+            if ($mutator !== null) {
+                $return = $mutator($return);
+            }
+            
             return $return;
         }
         
