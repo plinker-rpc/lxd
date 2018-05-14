@@ -17,11 +17,11 @@
  +-----------------------------------------------------------------------------+
  */
 
-namespace Plinker\Lxd;
+namespace Plinker\Lxd\Containers;
 
 use Plinker\Redbean\RedBean as Model;
 
-class Certificates extends Lib\Base
+class Aliases extends \Plinker\Lxd\Lib\Base
 {
     /*
      * @var - LXD endpoint (set by base)
@@ -33,14 +33,16 @@ class Certificates extends Lib\Base
      */
     public function __construct(array $config = [])
     {
-        parent::__construct($config, '/1.0/certificates');
+        parent::__construct($config, '/1.0/images/aliases');
     }
 
     /**
      *
      */
-    public function list($remote = 'local', $mutator = null)
+     /*
+    public function list($remote = 'local', $container = '', $mutator = null)
     {
-        return $this->query($remote.':'.$this->endpoint, 'GET', [], $mutator);
+        return $this->query($remote.':'.$this->endpoint.'/'.$container.'/snapshots', 'GET', [], $mutator);
     }
+    */
 }

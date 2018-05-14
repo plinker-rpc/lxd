@@ -21,7 +21,7 @@ namespace Plinker\Lxd\Containers;
 
 use Plinker\Redbean\RedBean as Model;
 
-class Snapshots extends Lib\Base
+class Snapshots extends \Plinker\Lxd\Lib\Base
 {
     /*
      * @var - LXD endpoint (set by base)
