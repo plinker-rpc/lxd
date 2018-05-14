@@ -12,7 +12,7 @@ List container snapshots.
 | container    | string        | Container name    |           |
 | mutator      | function      | Mutation function |           |
 
-``` javascript
+``` php
 lxc.containers.snapshots.list('local', 'my-container').then(response => {
     console.log(response)
 })
@@ -44,7 +44,7 @@ Get container snapshot information.
 | snapshot     | string        | Snapshot name     |           |
 | mutator      | function      | Mutation function |           |
 
-``` javascript
+``` php
 lxc.containers.snapshots.info('local', 'my-container', 'my-container (April 10, 2018 6:53 PM)').then(response => {
     console.log(response)
 })
@@ -136,7 +136,7 @@ Create container snapshot.
 | options      | object        | Snapshot options  |           |
 | mutator      | function      | Mutation function |           |
  
-``` javascript
+``` php
 lxc.containers.snapshots.create('local', 'my-container', {
     "name": "my-snapshot",
     "stateful": true
@@ -180,7 +180,7 @@ Rename container snapshot.
 | newname      | string        | New snapshot name |           |
 | mutator      | function      | Mutation function |           |
 
-``` javascript
+``` php
 lxc.containers.snapshots.rename('local', 'my-container', 'my-snapshot-name', 'new-snapshot-name').then(response => {
     console.log(response)
 })
@@ -219,7 +219,7 @@ Delete container snapshot.
 | snapshot     | string        | Snapshot name     |           |
 | mutator      | function      | Mutation function |           |
 
-``` javascript
+``` php
 lxc.containers.snapshots.delete('local', 'my-container', 'my-snapshot-name').then(response => {
     console.log(response)
 })
@@ -256,7 +256,7 @@ Restore container snapshot.
 | snapshot     | string        | Snapshot name     |           |
 | mutator      | function      | Mutation function |           |
 
-``` javascript
+``` php
 lxc.containers.snapshots.restore('local', 'my-container', 'my-snapshot-name').then(response => {
     console.log(response)
 })

@@ -11,10 +11,8 @@ List networks.
 | remote       | string        | LXD remote    | local         |
 | mutator      | function      | Mutation function |           |
  
-``` javascript
-lxc.networks.list('local').then(response => {
-    console.log(response)
-})
+``` php
+$client->lxc->networks->list('local');
 ```
 
 **Response**
@@ -37,10 +35,8 @@ Get network information.
 | name         | string        | Network name  |               |
 | mutator      | function      | Mutation function |           |
 
-``` javascript
-lxc.networks.info('local', 'lxdbr0').then(response => {
-    console.log(response)
-})
+``` php
+$client->lxc->networks->info('local', 'lxdbr0');
 ```
 
 **Response**
@@ -75,18 +71,16 @@ Create network.
 | options      | object        | Network options   |           |
 | mutator      | function      | Mutation function |           |
 
-``` javascript
-lxc.networks.create('local', {
-    "name": "my-network",
-    "description": "My network",
-    "config": {
-        "ipv4.address": "none",
-        "ipv6.address": "2001:470:b368:4242::1/64",
-        "ipv6.nat": "true"
-    }
-}).then(response => {
-    console.log(response)
-})
+``` php
+$client->lxc->networks->create('local', [
+    "name" => "my-network",
+    "description" => "My network",
+    "config" => [
+        "ipv4.address" => "none",
+        "ipv6.address" => "2001:470:b368:4242::1/64",
+        "ipv6.nat" => "true"
+    ]
+]);
 ```
 
 **Response**
@@ -110,16 +104,14 @@ Replace the network information.
 | options      | object        | Network options   |           |
 | mutator      | function      | Mutation function |           |
 
-``` javascript
-lxc.networks.replace('local', 'my-new-network', {
-    "config": {
-        "bridge.driver": "openvswitch",
-        "ipv4.address": "10.0.3.1/24",
-        "ipv6.address": "fd1:6997:4939:495d::1/64"
-    }
-}).then(response => {
-    console.log(response)
-})
+``` php
+$client->lxc->networks->replace('local', [
+    "config" => [
+        "ipv4.address" => "none",
+        "ipv6.address" => "2001:470:b368:4242::1/64",
+        "ipv6.nat" => "true"
+    ]
+]);
 ```
 
 **Response**
@@ -143,14 +135,14 @@ Update the network information.
 | options      | object        | Network options   |           |
 | mutator      | function      | Mutation function |           |
 
-``` javascript
-lxc.networks.replace('local', 'my-new-network', {
-    "config": {
-        "dns.mode": "dynamic"
-    }
-}).then(response => {
-    console.log(response)
-})
+``` php
+$client->lxc->networks->update('local', [
+    "name" => "my-network",
+    "description" => "My network",
+    "config" => [
+         "dns.mode" => "dynamic"
+    ]
+]);
 ```
 
 **Response**
@@ -174,10 +166,8 @@ Rename a network.
 | newName      | string        | New network name  |           |
 | mutator      | function      | Mutation function |           |
 
-``` javascript
-lxc.networks.rename('local', 'old-name', 'new-name').then(response => {
-    console.log(response)
-})
+``` php
+$client->lxc->networks->rename('local', 'old-name', 'new-name');
 ```
 
 **Response**
@@ -200,10 +190,8 @@ Delete a network.
 | name         | string        | Network name  |               |
 | mutator      | function      | Mutation function |           |
 
-``` javascript
-lxc.networks.delete('local', 'network-name').then(response => {
-    console.log(response)
-})
+``` php
+$client->lxc->networks->delete('local', 'network-name');
 ```
 
 **Response**

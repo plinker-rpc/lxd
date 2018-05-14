@@ -11,7 +11,7 @@ List operations on remote.
 | remote       | string        | LXD remote    | local         |
 | mutator      | function      | Mutation function |           |
 
-``` javascript
+``` php
 lxc.operations.list('local').then(response => {
   console.log(response)
 })
@@ -37,7 +37,7 @@ Get operation information.
 | uuid         | string        | Operation uuid    |           |
 | mutator      | function      | Mutation function |           |
 
-``` javascript
+``` php
 lxc.operations.info('local', '092a8755-fd90-4ce4-bf91-9f87d03fd5bc').then(response => {
     console.log(response)
 })
@@ -78,7 +78,7 @@ Delete an operation.
 | uuid         | string        | Operation uuid    |           |
 | mutator      | function      | Mutation function |           |
 
-``` javascript
+``` php
 lxc.operations.delete('local', '092a8755-fd90-4ce4-bf91-9f87d03fd5bc').then(response => {
     console.log(response)
 })

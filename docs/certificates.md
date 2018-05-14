@@ -11,10 +11,8 @@ List client certificates.
 | remote       | string        | LXD remote    | local         |
 | mutator      | function      | Mutation function |           |
 
-``` javascript
-lxc.certificates.list('local').then(response => {
-    console.log(response)
-})
+``` php
+$client->lxc->certificates->list('local');
 ```
 
 **Response**
@@ -36,15 +34,13 @@ Add client certificate.
 | options      | object        | Certificate options   |           |
 | mutator      | function      | Mutation function |           |
 
-``` javascript
-lxc.certificates.add('local', {
-    "type": "client",
-    "certificate": "PEM certificate",
-    "name": "foo",
-    "password": "server-trust-password"
-}).then(response => {
-    console.log(response)
-})
+``` php
+$client->lxc->certificates->add('local', [
+    "type" => "client",
+    "certificate" => "PEM certificate",
+    "name" => "foo",
+    "password" => "server-trust-password"
+]);
 ```
 
 **Response**
@@ -67,10 +63,8 @@ Get certificate information.
 | fingerprint  | string        | Certificate fingerprint |     |
 | mutator      | function      | Mutation function |           |
 
-``` javascript
-lxc.certificates.info('local', '33c50480212ea93c0afbb8125c280b1a66445cac64706066ade30851f54cc8bx').then(response => {
-    console.log(response)
-})
+``` php
+$client->lxc->certificates->info('local', '33c50480212ea93c0afbb8125c280b1a66445cac64706066ade30851f54cc8bx');
 ```
 
 **Response**
@@ -97,13 +91,11 @@ Replace certificate properties.
 | options      | object        | Certificate options   |           |
 | mutator      | function      | Mutation function |           |
  
-``` javascript
-lxc.certificates.replace('local', '33c50480212ea93c0afbb8125c280b1a66445cac64706066ade30851f54cc8bx', {
-    "type": "client",
-    "name": "bar"
-}).then(response => {
-    console.log(response)
-})
+``` php
+$client->lxc->certificates->replace('local', '33c50480212ea93c0afbb8125c280b1a66445cac64706066ade30851f54cc8bx', [
+    "type" => "client",
+    "name" => "bar"
+]);
 ```
 
 **Response**
@@ -127,12 +119,10 @@ Update certificate properties.
 | options      | object        | Certificate options   |           |
 | mutator      | function      | Mutation function |           |
 
-``` javascript
-lxc.certificates.replace('local', '33c50480212ea93c0afbb8125c280b1a66445cac64706066ade30851f54cc8bx', {
-    "name": "baz"
-}).then(response => {
-    console.log(response)
-})
+``` php
+$client->lxc->certificates->update('local', '33c50480212ea93c0afbb8125c280b1a66445cac64706066ade30851f54cc8bx', [
+    "name" => "baz"
+]);
 ```
 
 **Response**
@@ -155,10 +145,8 @@ Delete a client certificate.
 | fingerprint  | string        | Certificate fingerprint |     |
 | mutator      | function      | Mutation function |           |
 
-``` javascript
-lxc.certificates.delete('local', '33c50480212ea93c0afbb8125c280b1a66445cac64706066ade30851f54cc8bx').then(response => {
-    console.log(response)
-})
+``` php
+$client->lxc->certificates->delete('local', '33c50480212ea93c0afbb8125c280b1a66445cac64706066ade30851f54cc8bx');
 ```
 
 **Response**

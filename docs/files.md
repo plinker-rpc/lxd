@@ -18,10 +18,8 @@ fetch them.
 | path         | string        | Container directory path | |
 | mutator      | function      | Mutation function |           |
 
-``` javascript
-lxc.containers.files.list('local', 'my-container', '/').then(response => {
-    console.log(response);
-})
+``` php
+$client->lxc->containers->files->list('local', 'container-name', '/');
 ```
 
 **Response**
@@ -69,16 +67,12 @@ Upload files or folders into the container.
     All files are uploaded as uid/gid root user.
 </em>
 
-``` javascript
+``` php
 // single file
-lxc.containers.files.push('local', 'my-container', '/local/path/to/file.ext', '/path/to/file.ext').then(response => {
-    console.log(response);
-})
+$client->lxc->containers->files->push('local', 'my-container', '/local/path/to/file.ext', '/path/to/file.ext');
 
 // entire directory
-lxc.containers.files.push('local', 'my-container', '/local/path/to/folder', '/path/to/folder').then(response => {
-    console.log(response);
-})
+$client->lxc->containers->files->push('local', 'my-container', '/local/path/to/folder', '/path/to/folder');
 ```
 
 **Response**
@@ -102,10 +96,8 @@ to use that in future.
 | container    | string        | Container name    |           |
 | path         | string        | Container file path |
 
-``` javascript
-lxc.containers.files.pull('local', 'my-container', '/path/to/file').then(response => {
-    console.log(response);
-})
+``` php
+$client->lxc->containers->files->pull('local', 'my-container', '/path/to/file');
 ```
 
 <em>

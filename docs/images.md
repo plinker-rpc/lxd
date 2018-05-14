@@ -11,15 +11,11 @@ List images on remote.
 | remote       | string        | LXD remote    | local         |
 | filter       | string        | Image property based filtering | |
 
-``` javascript
-lxc.images.list('images').then(response => {
-  console.log(response)
-})
+``` php
+$client->lxc->images->list('images');
 
 // filtering by architecture
-lxc.images.list('images', 'architecture="' + ['x86_64', 'i686', 'amd64'].join('|') + '"').then(response => {
-  console.log(response)
-})
+$client->lxc->images->list('images', 'architecture="'.implode('|', ['x86_64', 'i686', 'amd64']).'"');
 ```
 
 **Response**
@@ -80,10 +76,8 @@ Get image information.
 | fingerprint  | string        | Image fingerprint |           |
 | mutator      | function      | Mutation function |           |
 
-``` javascript
-lxc.images.info('local', 'be7cec7c948958adfbb9bc7dbd292762d2388cc883466815fc2b6bc06bf06f5a').then(response => {
-    console.log(response)
-})
+``` php
+$client->lxc->images->info('local', 'be7cec7c948958adfbb9bc7dbd292762d2388cc883466815fc2b6bc06bf06f5a');
 ```
 
 **Response**
@@ -133,19 +127,17 @@ Replace image properties, update information and visibility.
 | options      | object        | Images options    |           |
 | mutator      | function      | Mutation function |           |
 
-``` javascript
-lxc.images.replace('local', 'be7cec7c948958adfbb9bc7dbd292762d2388cc883466815fc2b6bc06bf06f5a', {
-    "auto_update": true,
-    "properties": {
-        "architecture": "x86_64",
-        "description": "Ubuntu 16.04 LTS server (20160201)",
-        "os": "ubuntu",
-        "release": "trusty"
-    },
-    "public": true,
-}).then(response => {
-    console.log(response)
-})
+``` php
+$client->lxc->images->replace('local', 'be7cec7c948958adfbb9bc7dbd292762d2388cc883466815fc2b6bc06bf06f5a', [
+    "auto_update" => true,
+    "properties" => [
+        "architecture" => "x86_64",
+        "description" => "Ubuntu 16.04 LTS server (20160201)",
+        "os" => "ubuntu",
+        "release" => "trusty"
+    ],
+    "public" => true
+]);
 ```
 
 **Response**
@@ -169,19 +161,17 @@ Update image properties, update information and visibility.
 | options      | object        | Images options    |           |
 | mutator      | function      | Mutation function |           |
 
-``` javascript
-lxc.images.update('local', 'be7cec7c948958adfbb9bc7dbd292762d2388cc883466815fc2b6bc06bf06f5a', {
-    "auto_update": true,
-    "properties": {
-        "architecture": "x86_64",
-        "description": "Ubuntu 16.04 LTS server (20160201)",
-        "os": "ubuntu",
-        "release": "trusty"
-    },
-    "public": true,
-}).then(response => {
-    console.log(response)
-})
+``` php
+$client->lxc->images->update('local', 'be7cec7c948958adfbb9bc7dbd292762d2388cc883466815fc2b6bc06bf06f5a', [
+    "auto_update" => true,
+    "properties" => [
+        "architecture" => "x86_64",
+        "description" => "Ubuntu 16.04 LTS server (20160201)",
+        "os" => "ubuntu",
+        "release" => "trusty"
+    ],
+    "public" => true
+]);
 ```
 
 **Response**
@@ -204,10 +194,8 @@ Delete an image.
 | fingerprint  | string        | Image fingerprint |           |
 | mutator      | function      | Mutation function |           |
 
-``` javascript
-lxc.images.delete('local', 'be7cec7c948958adfbb9bc7dbd292762d2388cc883466815fc2b6bc06bf06f5a').then(response => {
-    console.log(response)
-})
+``` php
+$client->lxc->images->update('local', 'be7cec7c948958adfbb9bc7dbd292762d2388cc883466815fc2b6bc06bf06f5a');
 ```
 
 **Response**

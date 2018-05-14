@@ -13,34 +13,22 @@ List containers on remote.
 
 ``` javascript
 // apply no mutation to the response
-lxc.containers.list('local').then(response => {
-    // [ '/1.0/containers/my-container' ]
-    console.log(response)
-})
+$client->lxc->containers->list('local');
 
-// apply stripEndpoint on response
-lxc.containers.list('local', response => lxc.containers.stripEndpoint(response)).then(response => {
-    // [ 'my-container' ]
-    console.log(response)
-})
-
-// or you could write your own
-lxc.containers.list('local', response => {
-    let ret = []
-    response.forEach(value => {
-      ret.push(value.replace(lxc.containers.baseEndpoint + '/', ''))
-    })
-    return ret
-}).then(response => {
-    // [ 'my-container' ]
-    console.log(response)
-})
+// strip endpoint from result
+$client->lxd->containers->list('local', function ($result) {
+    return str_replace('/1.0/containers/', '', $result);    
+});
 ```
 
 **Response**
 ``` json
 [ 
     '/1.0/containers/my-container'
+]
+
+[ 
+    'my-container'
 ]
 ```
 
@@ -57,9 +45,7 @@ Get container information.
 | mutator      | function      | Mutation function |           |
 
 ``` javascript
-lxc.containers.info('local', 'my-container').then(response => {
-    console.log(response);
-})
+$client->lxc->containers->info('local', 'my-container');
 ```
 
 **Response**
@@ -125,27 +111,6 @@ lxc.containers.info('local', 'my-container').then(response => {
 }
 ```
 
-**Express**
-
-In express you might do something like the following, to get all containers and then enumerate their information.
-
-``` javascript
-app.get("/containers", function(req, res) {
-  //
-  lxc.containers.list('local', response => lxc.containers.stripEndpoint(response)).then(containers => {
-    let promises = []
-    //
-    containers.forEach(container => {
-      promises.push(lxc.containers.info('local', container))
-    })
-    //
-    Promise.all(promises).then(results => {
-      res.json(results)
-    })
-  })
-})
-```
-
 ## Get State
 
 Get the state of a container.
@@ -157,10 +122,12 @@ Get the state of a container.
 | remote       | string        | LXD remote    | local         |
 | container    | string        | The container name |          |
 
+<<<<<<<<< saved version
+``` php
+=========
 ``` javascript
-lxc.containers.getState('local', 'container-name').then(response => {
-    console.log(response);
-})
+>>>>>>>>> local version
+$client->lxc->containers->getState('local', 'my-container');
 ```
 
 **Response**
@@ -252,15 +219,13 @@ calling the (start, stop, restart, freeze, unfreeze) methods below as you can se
 | container    | string        | The container name |          |
 | options      | object \| json   | Container state options |  |
 
-``` javascript
-lxc.containers.setState('local', 'container-name',  {
-    "action": "stop",  # State change action (stop, start, restart, freeze or unfreeze)
-    "timeout": 30,     # A timeout after which the state change is considered as failed
-    "force": true,     # Force the state change (currently only valid for stop and restart where it means killing the container)
-    "stateful": true   # Whether to store or restore runtime state before stopping or startiong (only valid for stop and start, defaults to false)
-}).then(response => {
-    console.log(response)
-})
+``` php
+$client->lxc->containers->setState('local', 'my-container', [
+    "action" => "stop",  # State change action (stop, start, restart, freeze or unfreeze)
+    "timeout" => 30,     # A timeout after which the state change is considered as failed
+    "force" => true,     # Force the state change (currently only valid for stop and restart where it means killing the container)
+    "stateful" => true   # Whether to store or restore runtime state before stopping or startiong (only valid for stop and start, defaults to false)
+]);
 ```
 
 **Response**
@@ -297,27 +262,25 @@ Replaces container configuration or restore snapshot.
 | options      | object        | Container options |           |
 | mutator      | function      | Mutation function |           |
 
-``` javascript
-lxc.containers.replace('local', 'my-container', {
-    "architecture": "x86_64",
-    "config": {
-        "limits.cpu": "4",
-        "volatile.base_image": "97d97a3d1d053840ca19c86cdd0596cf1be060c5157d31407f2a4f9f350c78cc",
-        "volatile.eth0.hwaddr": "00:16:3e:1c:94:38"
-    },
-    "devices": {
-        "rootfs": {
-            "path": "/",
-            "type": "disk"
-        }
-    },
-    "ephemeral": true,
-    "profiles": [
+``` php
+$client->lxc->containers->replace('local', 'my-container', [
+    "architecture" => "x86_64",
+    "config" =>  [
+        "limits.cpu" => "4",
+        "volatile.base_image" => "97d97a3d1d053840ca19c86cdd0596cf1be060c5157d31407f2a4f9f350c78cc",
+        "volatile.eth0.hwaddr" => "00:16:3e:1c:94:38"
+    ],
+    "devices" => [
+        "rootfs" => [
+            "path" => "/",
+            "type" => "disk"
+        ]
+    ],
+    "ephemeral" => true,
+    "profiles" => [
         "default"
     ]
-}).then(response => {
-    console.log(response)
-})
+]);
 ```
 
 **Response**
@@ -341,20 +304,23 @@ Update container configuration.
 | options      | object        | Container options |           |
 | mutator      | function      | Mutation function |           |
 
-``` javascript
-lxc.containers.replace('local', 'my-container', {
-    "config": {
-        "limits.cpu": "4"
-    },
-    "devices": {
-        "rootfs": {
-            "size": "5GB"
-        }
-    },
-    "ephemeral": true
-}).then(response => {
-    console.log(response)
-})
+``` php
+$client->lxc->containers->update('local', 'my-container', [
+    "architecture" => "x86_64",
+    "config" =>  [
+        "limits.cpu" => "4"
+    ],
+    "devices" => [
+        "rootfs" => [
+            "path" => "/",
+            "type" => "disk"
+        ]
+    ],
+    "ephemeral" => true,
+    "profiles" => [
+        "default"
+    ]
+]);
 ```
 
 **Response**
@@ -378,10 +344,8 @@ Rename a container.
 | newName      | string        | New container name|           |
 | mutator      | function      | Mutation function |           |
 
-``` javascript
-lxc.containers.rename('local', 'old-name', 'new-name').then(response => {
-    console.log(response)
-})
+``` php
+$client->lxc->containers->rename('local', 'old-name', 'new-name');
 ```
 
 **Response**
@@ -405,43 +369,45 @@ Create a container.
 
 Full container options can be found here: [https://github.com/lxc/lxd/blob/master/doc/rest-api.md#post-1](https://github.com/lxc/lxd/blob/master/doc/rest-api.md#post-1)
 
-``` javascript
+``` php
 // example from local
-lxc.containers.create('local', {
-    "name": "my-new-container",
-    "architecture": "x86_64",
-    "profiles": ["default"],
-    "ephemeral": true,
-    "config": { "limits.cpu": "2" },
-    "devices": {},
-    "source": {
-        "type": "image",
-        "fingerprint": "be7cec7c9489"
-    }
-}).then(response => {
-    console.log(response)
-})
+$client->lxc->containers->create('local', [
+    "name" => "my-new-container",
+    "architecture" => "x86_64",
+    "profiles" => [
+        "default"
+    ],
+    "ephemeral" => true,
+    "config" => [
+        "limits.cpu" => "2"
+    ],
+    "devices" => [],
+    "source" => [
+        "type" => "image",
+        "fingerprint" => "be7cec7c9489"
+    ]
+]);
 
 // example from https://images.linuxcontainers.org
-lxc.containers.create('local', {
-  'name': 'my-new-container',
-  'architecture': 'x86_64',
-  'profiles': ['default'],
-  'ephemeral': true,
-  'config': { 'limits.cpu': '2' },
-  'devices': {},
-  'source': {
-    'type': 'image',
-    'mode': 'pull',
-    'server': 'https://images.linuxcontainers.org:8443',
-    'protocol': 'simplestreams',
-    'alias': 'ubuntu/16.04'
-
-  }
-}).then(response => {
-  console.log(response)
-})
-
+$client->lxc->containers->create('local', [
+    "name" => "my-new-container",
+    "architecture" => "x86_64",
+    "profiles" => [
+        "default"
+    ],
+    "ephemeral" => true,
+    "config" => [
+        "limits.cpu" => "2"
+    ],
+    "devices" => [],
+    "source" => [
+        'type': 'image',
+        'mode': 'pull',
+        'server': 'https://images.linuxcontainers.org:8443',
+        'protocol': 'simplestreams',
+        'alias': 'ubuntu/16.04'
+    ]
+]);
 ```
 
 **Response**
@@ -467,18 +433,18 @@ lxc.containers.create('local', {
 
 *you could also simply call `lxc.local()` to run what you would normally run on cmd line:
 
-``` javascript
+``` php
 // same as above
-lxc.local('lxc launch ubuntu:16.04 my-new-container')
+$client->lxc->local('lxc launch ubuntu:16.04 my-new-container');
 
 // launch on a remote
-lxc.local('lxc launch ubuntu:16.04 production:my-container')
+$client->lxc->local('lxc launch ubuntu:16.04 production:my-container')
 
 // launch local image on a remote
-lxc.local('lxc launch local:<fingerprint> production:my-container')
+$client->lxc->local('lxc launch local:<fingerprint> production:my-container')
 
 // launch remote image on a remote
-lxc.local('lxc launch staging:<fingerprint> production:my-container')
+$client->lxc->local('lxc launch staging:<fingerprint> production:my-container')
 ```
 
 ## Start
@@ -492,10 +458,12 @@ Start a container.
 | remote       | string        | LXD remote    | local         |
 | container    | string        | The container name |          |
 
+<<<<<<<<< saved version
+``` php
+=========
 ``` javascript
-lxc.containers.start('local', 'container-name').then(response => {
-    console.log(response)
-})
+>>>>>>>>> local version
+$client->lxc->containers->start('local', 'container-name');
 ```
 
 **Response**
@@ -530,10 +498,8 @@ Stop a container.
 | remote       | string        | LXD remote    | local         |
 | container    | string        | The container name |          |
 
-``` javascript
-lxc.containers.stop('local', 'container-name').then(response => {
-    console.log(response)
-})
+``` php
+$client->lxc->containers->stop('local', 'container-name');
 ```
 
 **Response**
@@ -568,10 +534,8 @@ Restart a container.
 | remote       | string        | LXD remote    | local         |
 | container    | string        | The container name |          |
 
-``` javascript
-lxc.containers.restart('local', 'container-name').then(response => {
-    console.log(response)
-})
+``` php
+$client->lxc->containers->restart('local', 'container-name');
 ```
 
 **Response**
@@ -606,10 +570,8 @@ Freeze a container.
 | remote       | string        | LXD remote    | local         |
 | container    | string        | The container name |          |
 
-``` javascript
-lxc.containers.freeze('local', 'container-name').then(response => {
-    console.log(response)
-})
+``` php
+$client->lxc->containers->freeze('local', 'container-name');
 ```
 
 **Response**
@@ -644,10 +606,8 @@ Unfreeze a container.
 | remote       | string        | LXD remote    | local         |
 | container    | string        | The container name |          |
 
-``` javascript
-lxc.containers.unfreeze('local', 'container-name').then(response => {
-    console.log(response)
-})
+``` php
+$client->lxc->containers->unfreeze('local', 'container-name');
 ```
 
 **Response**
@@ -683,10 +643,8 @@ Delete a container.
 | name         | string        | Container name    |           |
 | mutator      | function      | Mutation function |           |
 
-``` javascript
-lxc.containers.delete('local', 'container-name').then(response => {
-    console.log(response)
-})
+``` php
+$client->lxc->containers->delete('local', 'container-name');
 ```
 
 **Response**
@@ -710,18 +668,16 @@ Run a command in container.
 | options      | object        | The container options |       |
 | mutator      | function      | Mutation function |           |
 
-``` javascript
-lxc.containers.exec('local', 'my-container', {
-    "command": ["/bin/bash"],
-    "environment": {},
-    "wait-for-websocket": false,
-    "record-output": false,
-    "interactive": false,
-    "width": 80,
-    "height": 25
-}).then(response => {
-    console.log(response);
-})
+``` php
+$client->lxc->containers->exec('local', 'container-name', [
+    "command" => ["/bin/bash"],
+    "environment" => [],
+    "wait-for-websocket" => false,
+    "record-output" => false,
+    "interactive" => false,
+    "width" => 80,
+    "height" => 25
+]);
 ```
 
 **Response**

@@ -11,7 +11,7 @@ List profiles.
 | remote       | string        | LXD remote    | local         |
 | mutator      | function      | Mutation function |           |
 
-``` javascript
+``` php
 lxc.profiles.list('local').then(response => {
     console.log(response)
 })
@@ -36,7 +36,7 @@ Get profile information.
 | name         | string        | Profile name  |               |
 | mutator      | function      | Mutation function |           |
 
-``` javascript
+``` php
 lxc.profiles.info('local', 'default').then(response => {
     console.log(response)
 })
@@ -80,7 +80,7 @@ Create profile.
 | options      | object        | Profile options   |           |
 | mutator      | function      | Mutation function |           |
 
-``` javascript
+``` php
 lxc.profiles.create('local', {
     "name": "my-new-profile",
     "description": "Some informative description string",
@@ -119,7 +119,7 @@ Replace profile properties, update description, devices and limits.
 | options      | object        | Profile options   |           |
 | mutator      | function      | Mutation function |           |
 
-``` javascript
+``` php
 lxc.profiles.replace('local', 'my-new-profile', {
     "config": {
         "limits.memory": "4GB"
@@ -152,7 +152,7 @@ Update profile properties, update description, devices and limits.
 | options      | object        | Profile options   |           |
 | mutator      | function      | Mutation function |           |
 
-``` javascript
+``` php
 lxc.profiles.replace('local', 'my-new-profile', {
     "config": {
         "limits.memory": "4GB"
@@ -185,7 +185,7 @@ Rename a profile.
 | newName      | string        | New profile name  |           |
 | mutator      | function      | Mutation function |           |
 
-``` javascript
+``` php
 lxc.profiles.rename('local', 'old-name', 'new-name').then(response => {
     console.log(response)
 })
@@ -211,7 +211,7 @@ Delete a profile.
 | name         | string        | Profile name  |               |
 | mutator      | function      | Mutation function |           |
 
-``` javascript
+``` php
 lxc.profiles.delete('local', 'profile-name').then(response => {
     console.log(response)
 })

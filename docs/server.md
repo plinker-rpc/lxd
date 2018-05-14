@@ -10,7 +10,7 @@ Get server information.
 | ----------   | ------------- | ------------- | ------------- | 
 | remote       | string        | LXD remote    | local         |
 
-``` javascript
+``` php
 lxc.info('local').then(response => {
     console.log(response)
 })
@@ -147,7 +147,7 @@ Replaces the server configuration or other properties.
 
 <em>Replaces any existing config with the provided one.</em>
 
-``` javascript
+``` php
 lxc.replace('local', {
     "config": {
         "core.trust_password": "my-new-password",
@@ -178,7 +178,7 @@ Updates the server configuration or other properties.
 
 <em>Updates only the listed keys, rest remain intact.</em>
 
-``` javascript
+``` php
 lxc.update('local', {
     "config": {
         "core.trust_password": "my-new-password",
@@ -206,7 +206,7 @@ Get information about the resources available to the LXD server.
 | ----------   | ------------- | ------------- | ------------- | 
 | remote       | string        | LXD remote    | local         |
 
-``` javascript
+``` php
 lxc.server.resources('local').then(response => {
     console.log(response)
 })
@@ -254,7 +254,7 @@ Get currently defined remotes. (only works with local)
 | ----------   | ------------- | ------------- | ------------- | 
 | None         |               |               |               | 
 
-``` javascript
+``` php
 lxc.server.remotes().then(response => {
     console.log(response)
 })
@@ -280,7 +280,7 @@ Allows you to execute local exec commands.
 | ----------   | ------------- | -------------  | ------------- | 
 | command      | string        | Shell command to run |         |
 
-``` javascript
+``` php
 lxc.local('lxc list').then(response => {
     console.log(response)
 })

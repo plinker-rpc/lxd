@@ -15,10 +15,8 @@ to enable you to get logs for failed creations.
 | container    | string        | Container name    |           |
 | mutator      | function      | Mutation function |           |
 
-``` javascript
-lxc.containers.logs.list('local', 'my-container').then(response => {
-    console.log(response);
-})
+``` php
+$client->lxc->containers->logs->list('local', 'my-container');
 ```
 
 **Response**
@@ -45,10 +43,8 @@ Returns the contents of a particular log file.
 | logfile      | string        | Container logfile |           |
 | mutator      | function      | Mutation function |           |
 
-``` javascript
-lxc.containers.logs.get('local', 'my-container', 'lxc.conf').then(response => {
-    console.log(response);
-})
+``` php
+$client->lxc->containers->logs->get('local', 'my-container', 'lxc.conf');
 ```
 
 **Response**
@@ -69,10 +65,8 @@ Delete a particular log file.
 | logfile      | string        | Container logfile |           |
 | mutator      | function      | Mutation function |           |
 
-``` javascript
-lxc.containers.logs.delete('local', 'my-container', 'lxc.conf').then(response => {
-    console.log(response);
-})
+``` php
+$client->lxc->containers->logs->delete('local', 'my-container', 'lxc.conf');
 ```
 
 **Response**

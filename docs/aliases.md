@@ -11,7 +11,7 @@ List image aliases
 | remote       | string        | LXD remote    | local         |
 | mutator      | function      | Mutation function |           |
 
-``` javascript
+``` php
 $client->lxc->images->aliases->list('local');
 ```
 
@@ -34,7 +34,7 @@ Get image alias information.
 | name         | string        | Alias name    |               |
 | mutator      | function      | Mutation function |           |
 
-``` javascript
+``` php
 $client->lxc->images->aliases->info('local', 'alias-name');
 ```
 
@@ -60,7 +60,7 @@ Get image alias information.
 | options      | object        | Alias options     |           |
 | mutator      | function      | Mutation function |           |
 
-``` javascript
+``` php
 $client->lxc->images->aliases->create('local', [
     "description" => "The alias description",
     "target" => "<image fingerprint>",
@@ -89,7 +89,7 @@ Replace alias target or description.
 | options      | object        | Alias options     |           |
 | mutator      | function      | Mutation function |           |
 
-``` javascript
+``` php
 $client->lxc->images->aliases->replace('local', 'alias-name', [
     "description" => "New description",
     "target" => "<image fingerprint>"
@@ -117,7 +117,7 @@ Update alias target or description.
 | options      | object        | Images options    |           |
 | mutator      | function      | Mutation function |           |
 
-``` javascript
+``` php
 $client->lxc->images->aliases->update('local', 'alias-name', [
     "description" => "New description",
     "target" => "<image fingerprint>"
@@ -145,7 +145,7 @@ Rename an image alias.
 | options      | object        | Images options    |           |
 | mutator      | function      | Mutation function |           |
 
-``` javascript
+``` php
 $client->lxc->images->aliases->rename('local', 'alias-name', [
     "name": "new-name"
 ]);
@@ -171,7 +171,7 @@ Delete an image alias.
 | name         | name          | Alias name    |               |
 | mutator      | function      | Mutation function |           |
 
-``` javascript
+``` php
 $client->lxc->images->aliases->delete('local', 'alias-name');
 ```
 

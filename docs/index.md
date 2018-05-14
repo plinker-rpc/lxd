@@ -87,7 +87,7 @@ List containers on remote.
 | remote       | string        | LXD remote    | local         |
 | mutator      | function      | Mutation function |           |
 
-``` javascript
+``` php
 $client->lxd->containers->list('local', function ($result) {
     return str_replace('/1.0/containers/', '', $result);    
 });
