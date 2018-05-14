@@ -12,10 +12,10 @@ List images on remote.
 | filter       | string        | Image property based filtering | |
 
 ``` php
-$client->lxc->images->list('images');
+$client->lxd->images->list('images');
 
 // filtering by architecture
-$client->lxc->images->list('images', 'architecture="'.implode('|', ['x86_64', 'i686', 'amd64']).'"');
+$client->lxd->images->list('images', 'architecture="'.implode('|', ['x86_64', 'i686', 'amd64']).'"');
 ```
 
 **Response**
@@ -77,7 +77,7 @@ Get image information.
 | mutator      | function      | Mutation function |           |
 
 ``` php
-$client->lxc->images->info('local', 'be7cec7c948958adfbb9bc7dbd292762d2388cc883466815fc2b6bc06bf06f5a');
+$client->lxd->images->info('local', 'be7cec7c948958adfbb9bc7dbd292762d2388cc883466815fc2b6bc06bf06f5a');
 ```
 
 **Response**
@@ -128,7 +128,7 @@ Replace image properties, update information and visibility.
 | mutator      | function      | Mutation function |           |
 
 ``` php
-$client->lxc->images->replace('local', 'be7cec7c948958adfbb9bc7dbd292762d2388cc883466815fc2b6bc06bf06f5a', [
+$client->lxd->images->replace('local', 'be7cec7c948958adfbb9bc7dbd292762d2388cc883466815fc2b6bc06bf06f5a', [
     "auto_update" => true,
     "properties" => [
         "architecture" => "x86_64",
@@ -162,7 +162,7 @@ Update image properties, update information and visibility.
 | mutator      | function      | Mutation function |           |
 
 ``` php
-$client->lxc->images->update('local', 'be7cec7c948958adfbb9bc7dbd292762d2388cc883466815fc2b6bc06bf06f5a', [
+$client->lxd->images->update('local', 'be7cec7c948958adfbb9bc7dbd292762d2388cc883466815fc2b6bc06bf06f5a', [
     "auto_update" => true,
     "properties" => [
         "architecture" => "x86_64",
@@ -195,7 +195,7 @@ Delete an image.
 | mutator      | function      | Mutation function |           |
 
 ``` php
-$client->lxc->images->update('local', 'be7cec7c948958adfbb9bc7dbd292762d2388cc883466815fc2b6bc06bf06f5a');
+$client->lxd->images->update('local', 'be7cec7c948958adfbb9bc7dbd292762d2388cc883466815fc2b6bc06bf06f5a');
 ```
 
 **Response**

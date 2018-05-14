@@ -12,7 +12,7 @@ List networks.
 | mutator      | function      | Mutation function |           |
  
 ``` php
-$client->lxc->networks->list('local');
+$client->lxd->networks->list('local');
 ```
 
 **Response**
@@ -36,7 +36,7 @@ Get network information.
 | mutator      | function      | Mutation function |           |
 
 ``` php
-$client->lxc->networks->info('local', 'lxdbr0');
+$client->lxd->networks->info('local', 'lxdbr0');
 ```
 
 **Response**
@@ -72,7 +72,7 @@ Create network.
 | mutator      | function      | Mutation function |           |
 
 ``` php
-$client->lxc->networks->create('local', [
+$client->lxd->networks->create('local', [
     "name" => "my-network",
     "description" => "My network",
     "config" => [
@@ -105,7 +105,7 @@ Replace the network information.
 | mutator      | function      | Mutation function |           |
 
 ``` php
-$client->lxc->networks->replace('local', [
+$client->lxd->networks->replace('local', [
     "config" => [
         "ipv4.address" => "none",
         "ipv6.address" => "2001:470:b368:4242::1/64",
@@ -136,7 +136,7 @@ Update the network information.
 | mutator      | function      | Mutation function |           |
 
 ``` php
-$client->lxc->networks->update('local', [
+$client->lxd->networks->update('local', [
     "name" => "my-network",
     "description" => "My network",
     "config" => [
@@ -167,7 +167,7 @@ Rename a network.
 | mutator      | function      | Mutation function |           |
 
 ``` php
-$client->lxc->networks->rename('local', 'old-name', 'new-name');
+$client->lxd->networks->rename('local', 'old-name', 'new-name');
 ```
 
 **Response**
@@ -191,7 +191,7 @@ Delete a network.
 | mutator      | function      | Mutation function |           |
 
 ``` php
-$client->lxc->networks->delete('local', 'network-name');
+$client->lxd->networks->delete('local', 'network-name');
 ```
 
 **Response**

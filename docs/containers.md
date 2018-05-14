@@ -122,12 +122,8 @@ Get the state of a container.
 | remote       | string        | LXD remote    | local         |
 | container    | string        | The container name |          |
 
-<<<<<<<<< saved version
-``` php
-=========
 ``` javascript
->>>>>>>>> local version
-$client->lxc->containers->getState('local', 'my-container');
+$client->lxd->containers->getState('local', 'my-container');
 ```
 
 **Response**
@@ -219,8 +215,8 @@ calling the (start, stop, restart, freeze, unfreeze) methods below as you can se
 | container    | string        | The container name |          |
 | options      | object \| json   | Container state options |  |
 
-``` php
-$client->lxc->containers->setState('local', 'my-container', [
+``` javascript
+$client->lxd->containers->setState('local', 'my-container', [
     "action" => "stop",  # State change action (stop, start, restart, freeze or unfreeze)
     "timeout" => 30,     # A timeout after which the state change is considered as failed
     "force" => true,     # Force the state change (currently only valid for stop and restart where it means killing the container)
@@ -262,8 +258,8 @@ Replaces container configuration or restore snapshot.
 | options      | object        | Container options |           |
 | mutator      | function      | Mutation function |           |
 
-``` php
-$client->lxc->containers->replace('local', 'my-container', [
+``` javascript
+$client->lxd->containers->replace('local', 'my-container', [
     "architecture" => "x86_64",
     "config" =>  [
         "limits.cpu" => "4",
@@ -304,8 +300,8 @@ Update container configuration.
 | options      | object        | Container options |           |
 | mutator      | function      | Mutation function |           |
 
-``` php
-$client->lxc->containers->update('local', 'my-container', [
+``` javascript
+$client->lxd->containers->update('local', 'my-container', [
     "architecture" => "x86_64",
     "config" =>  [
         "limits.cpu" => "4"
@@ -344,8 +340,8 @@ Rename a container.
 | newName      | string        | New container name|           |
 | mutator      | function      | Mutation function |           |
 
-``` php
-$client->lxc->containers->rename('local', 'old-name', 'new-name');
+``` javascript
+$client->lxd->containers->rename('local', 'old-name', 'new-name');
 ```
 
 **Response**
@@ -369,9 +365,9 @@ Create a container.
 
 Full container options can be found here: [https://github.com/lxc/lxd/blob/master/doc/rest-api.md#post-1](https://github.com/lxc/lxd/blob/master/doc/rest-api.md#post-1)
 
-``` php
+``` javascript
 // example from local
-$client->lxc->containers->create('local', [
+$client->lxd->containers->create('local', [
     "name" => "my-new-container",
     "architecture" => "x86_64",
     "profiles" => [
@@ -389,7 +385,7 @@ $client->lxc->containers->create('local', [
 ]);
 
 // example from https://images.linuxcontainers.org
-$client->lxc->containers->create('local', [
+$client->lxd->containers->create('local', [
     "name" => "my-new-container",
     "architecture" => "x86_64",
     "profiles" => [
@@ -433,18 +429,18 @@ $client->lxc->containers->create('local', [
 
 *you could also simply call `lxc.local()` to run what you would normally run on cmd line:
 
-``` php
+``` javascript
 // same as above
-$client->lxc->local('lxc launch ubuntu:16.04 my-new-container');
+$client->lxd->local('lxc launch ubuntu:16.04 my-new-container');
 
 // launch on a remote
-$client->lxc->local('lxc launch ubuntu:16.04 production:my-container')
+$client->lxd->local('lxc launch ubuntu:16.04 production:my-container')
 
 // launch local image on a remote
-$client->lxc->local('lxc launch local:<fingerprint> production:my-container')
+$client->lxd->local('lxc launch local:<fingerprint> production:my-container')
 
 // launch remote image on a remote
-$client->lxc->local('lxc launch staging:<fingerprint> production:my-container')
+$client->lxd->local('lxc launch staging:<fingerprint> production:my-container')
 ```
 
 ## Start
@@ -458,12 +454,8 @@ Start a container.
 | remote       | string        | LXD remote    | local         |
 | container    | string        | The container name |          |
 
-<<<<<<<<< saved version
-``` php
-=========
 ``` javascript
->>>>>>>>> local version
-$client->lxc->containers->start('local', 'container-name');
+$client->lxd->containers->start('local', 'container-name');
 ```
 
 **Response**
@@ -498,8 +490,8 @@ Stop a container.
 | remote       | string        | LXD remote    | local         |
 | container    | string        | The container name |          |
 
-``` php
-$client->lxc->containers->stop('local', 'container-name');
+``` javascript
+$client->lxd->containers->stop('local', 'container-name');
 ```
 
 **Response**
@@ -534,8 +526,8 @@ Restart a container.
 | remote       | string        | LXD remote    | local         |
 | container    | string        | The container name |          |
 
-``` php
-$client->lxc->containers->restart('local', 'container-name');
+``` javascript
+$client->lxd->containers->restart('local', 'container-name');
 ```
 
 **Response**
@@ -570,8 +562,8 @@ Freeze a container.
 | remote       | string        | LXD remote    | local         |
 | container    | string        | The container name |          |
 
-``` php
-$client->lxc->containers->freeze('local', 'container-name');
+``` javascript
+$client->lxd->containers->freeze('local', 'container-name');
 ```
 
 **Response**
@@ -606,8 +598,8 @@ Unfreeze a container.
 | remote       | string        | LXD remote    | local         |
 | container    | string        | The container name |          |
 
-``` php
-$client->lxc->containers->unfreeze('local', 'container-name');
+``` javascript
+$client->lxd->containers->unfreeze('local', 'container-name');
 ```
 
 **Response**
@@ -643,8 +635,8 @@ Delete a container.
 | name         | string        | Container name    |           |
 | mutator      | function      | Mutation function |           |
 
-``` php
-$client->lxc->containers->delete('local', 'container-name');
+``` javascript
+$client->lxd->containers->delete('local', 'container-name');
 ```
 
 **Response**
@@ -668,8 +660,8 @@ Run a command in container.
 | options      | object        | The container options |       |
 | mutator      | function      | Mutation function |           |
 
-``` php
-$client->lxc->containers->exec('local', 'container-name', [
+``` javascript
+$client->lxd->containers->exec('local', 'container-name', [
     "command" => ["/bin/bash"],
     "environment" => [],
     "wait-for-websocket" => false,

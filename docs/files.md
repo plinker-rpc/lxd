@@ -19,7 +19,7 @@ fetch them.
 | mutator      | function      | Mutation function |           |
 
 ``` php
-$client->lxc->containers->files->list('local', 'container-name', '/');
+$client->lxd->containers->files->list('local', 'container-name', '/');
 ```
 
 **Response**
@@ -69,10 +69,10 @@ Upload files or folders into the container.
 
 ``` php
 // single file
-$client->lxc->containers->files->push('local', 'my-container', '/local/path/to/file.ext', '/path/to/file.ext');
+$client->lxd->containers->files->push('local', 'my-container', '/local/path/to/file.ext', '/path/to/file.ext');
 
 // entire directory
-$client->lxc->containers->files->push('local', 'my-container', '/local/path/to/folder', '/path/to/folder');
+$client->lxd->containers->files->push('local', 'my-container', '/local/path/to/folder', '/path/to/folder');
 ```
 
 **Response**
@@ -97,7 +97,7 @@ to use that in future.
 | path         | string        | Container file path |
 
 ``` php
-$client->lxc->containers->files->pull('local', 'my-container', '/path/to/file');
+$client->lxd->containers->files->pull('local', 'my-container', '/path/to/file');
 ```
 
 <em>

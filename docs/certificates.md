@@ -11,7 +11,7 @@ List client certificates.
 | remote       | string        | LXD remote    | local         |
 | mutator      | function      | Mutation function |           |
 
-``` php
+``` javascript
 $client->lxc->certificates->list('local');
 ```
 
@@ -34,7 +34,7 @@ Add client certificate.
 | options      | object        | Certificate options   |           |
 | mutator      | function      | Mutation function |           |
 
-``` php
+``` javascript
 $client->lxc->certificates->add('local', [
     "type" => "client",
     "certificate" => "PEM certificate",
@@ -63,7 +63,7 @@ Get certificate information.
 | fingerprint  | string        | Certificate fingerprint |     |
 | mutator      | function      | Mutation function |           |
 
-``` php
+``` javascript
 $client->lxc->certificates->info('local', '33c50480212ea93c0afbb8125c280b1a66445cac64706066ade30851f54cc8bx');
 ```
 
@@ -91,7 +91,7 @@ Replace certificate properties.
 | options      | object        | Certificate options   |           |
 | mutator      | function      | Mutation function |           |
  
-``` php
+``` javascript
 $client->lxc->certificates->replace('local', '33c50480212ea93c0afbb8125c280b1a66445cac64706066ade30851f54cc8bx', [
     "type" => "client",
     "name" => "bar"
@@ -119,8 +119,8 @@ Update certificate properties.
 | options      | object        | Certificate options   |           |
 | mutator      | function      | Mutation function |           |
 
-``` php
-$client->lxc->certificates->update('local', '33c50480212ea93c0afbb8125c280b1a66445cac64706066ade30851f54cc8bx', [
+``` javascript
+$client->lxd->certificates->update('local', '33c50480212ea93c0afbb8125c280b1a66445cac64706066ade30851f54cc8bx', [
     "name" => "baz"
 ]);
 ```
@@ -145,8 +145,8 @@ Delete a client certificate.
 | fingerprint  | string        | Certificate fingerprint |     |
 | mutator      | function      | Mutation function |           |
 
-``` php
-$client->lxc->certificates->delete('local', '33c50480212ea93c0afbb8125c280b1a66445cac64706066ade30851f54cc8bx');
+``` javascript
+$client->lxd->certificates->delete('local', '33c50480212ea93c0afbb8125c280b1a66445cac64706066ade30851f54cc8bx');
 ```
 
 **Response**

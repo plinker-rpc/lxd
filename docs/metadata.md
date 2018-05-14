@@ -13,7 +13,7 @@ Returns the containers metadata.
 | mutator      | function      | Mutation function |           |
 
 ``` php
-$client->lxc->containers->metadata->get('local', 'my-container');
+$client->lxd->containers->metadata->get('local', 'my-container');
 ```
 
 **Response**
@@ -96,7 +96,7 @@ Replace the containers metadata.
 | mutator      | function      | Mutation function |           |
 
 ``` php
-$client->lxc->containers->metadata->replace('local', 'my-container', [
+$client->lxd->containers->metadata->replace('local', 'my-container', [
     "architecture" => "x86_64",
     "creation_date" => 1522920368,
     "expiry_date" => 0,

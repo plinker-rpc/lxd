@@ -53,7 +53,7 @@ Creating a client instance is done as follows:
     
 ## Basic Usage
 
-Essentially you can do any LXD operation with the single `$client->lxc->query()` method, or you can use the [helper methods](https://plinker-rpc.github.io/lxd/)  which cover all the LXD endpoints.
+Essentially you can do any LXD operation with the single `$client->lxd->query()` method, or you can use the [helper methods](https://plinker-rpc.github.io/lxd/)  which cover all the LXD endpoints.
 
 **Parameters & Call**
 
@@ -65,7 +65,7 @@ Essentially you can do any LXD operation with the single `$client->lxc->query()`
 | mutator      | function      | Pre-resolve mutation function      |        |
 
 ```
-$client->lxc->query('remote:/1.0', 'GET', []);
+$client->lxd->query('remote:/1.0', 'GET', []);
 ```
 
 ## Full Documentation

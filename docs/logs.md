@@ -16,7 +16,7 @@ to enable you to get logs for failed creations.
 | mutator      | function      | Mutation function |           |
 
 ``` php
-$client->lxc->containers->logs->list('local', 'my-container');
+$client->lxd->containers->logs->list('local', 'my-container');
 ```
 
 **Response**
@@ -44,7 +44,7 @@ Returns the contents of a particular log file.
 | mutator      | function      | Mutation function |           |
 
 ``` php
-$client->lxc->containers->logs->get('local', 'my-container', 'lxc.conf');
+$client->lxd->containers->logs->get('local', 'my-container', 'lxc.conf');
 ```
 
 **Response**
@@ -66,7 +66,7 @@ Delete a particular log file.
 | mutator      | function      | Mutation function |           |
 
 ``` php
-$client->lxc->containers->logs->delete('local', 'my-container', 'lxc.conf');
+$client->lxd->containers->logs->delete('local', 'my-container', 'lxc.conf');
 ```
 
 **Response**
