@@ -53,7 +53,7 @@ Creating a client instance is done as follows:
     
 ## Basic Usage
 
-Essentially you can do any LXD operation with the single `$client->lxc->query()` method, or you can use the [helper methods](https://lcherone.github.io/lxc-query/server/)  which cover all the LXD endpoints.
+Essentially you can do any LXD operation with the single `$client->lxc->query()` method, or you can use the [helper methods](https://plinker-rpc.github.io/lxd/)  which cover all the LXD endpoints.
 
 **Parameters & Call**
 
@@ -70,7 +70,7 @@ $client->lxc->query('remote:/1.0', 'GET', []);
 
 ## Full Documentation
 
-To view the complete docs for this component including all methods see: https://lcherone.github.io/lxc-query/server/
+To view the complete docs for this component including all methods see: [https://plinker-rpc.github.io/lxd/](https://plinker-rpc.github.io/lxd/)
 
 ## Methods
 
