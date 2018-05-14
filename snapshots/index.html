@@ -586,15 +586,15 @@
 </tr>
 </tbody>
 </table>
-<div class="codehilite"><pre><span></span><span class="nx">lxc</span><span class="p">.</span><span class="nx">containers</span><span class="p">.</span><span class="nx">snapshots</span><span class="p">.</span><span class="nx">list</span><span class="p">(</span><span class="s1">&#39;local&#39;</span><span class="p">,</span> <span class="s1">&#39;my-container&#39;</span><span class="p">).</span><span class="nx">then</span><span class="p">(</span><span class="nx">response</span> <span class="p">=&gt;</span> <span class="p">{</span>
-    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">response</span><span class="p">)</span>
-<span class="p">})</span>
+<div class="codehilite"><pre><span></span><span class="x">lxc.containers.snapshots.list(&#39;local&#39;, &#39;my-container&#39;).then(response =&gt; {</span>
+<span class="x">    console.log(response)</span>
+<span class="x">})</span>
 
-<span class="c1">// or apply stripEndpoint on response</span>
-<span class="nx">lxc</span><span class="p">.</span><span class="nx">containers</span><span class="p">.</span><span class="nx">snapshots</span><span class="p">.</span><span class="nx">list</span><span class="p">(</span><span class="s1">&#39;local&#39;</span><span class="p">,</span> <span class="s1">&#39;my-container&#39;</span><span class="p">,</span> <span class="nx">response</span> <span class="p">=&gt;</span> <span class="nx">lxc</span><span class="p">.</span><span class="nx">containers</span><span class="p">.</span><span class="nx">snapshots</span><span class="p">.</span><span class="nx">stripEndpoint</span><span class="p">(</span><span class="nx">response</span><span class="p">)).</span><span class="nx">then</span><span class="p">(</span><span class="nx">response</span> <span class="p">=&gt;</span> <span class="p">{</span>
-    <span class="c1">// [ &#39;my-snapshot&#39; ]</span>
-    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">response</span><span class="p">)</span>
-<span class="p">})</span>
+<span class="x">// or apply stripEndpoint on response</span>
+<span class="x">lxc.containers.snapshots.list(&#39;local&#39;, &#39;my-container&#39;, response =&gt; lxc.containers.snapshots.stripEndpoint(response)).then(response =&gt; {</span>
+<span class="x">    // [ &#39;my-snapshot&#39; ]</span>
+<span class="x">    console.log(response)</span>
+<span class="x">})</span>
 </pre></div>
 
 
@@ -644,9 +644,9 @@
 </tr>
 </tbody>
 </table>
-<div class="codehilite"><pre><span></span><span class="nx">lxc</span><span class="p">.</span><span class="nx">containers</span><span class="p">.</span><span class="nx">snapshots</span><span class="p">.</span><span class="nx">info</span><span class="p">(</span><span class="s1">&#39;local&#39;</span><span class="p">,</span> <span class="s1">&#39;my-container&#39;</span><span class="p">,</span> <span class="s1">&#39;my-container (April 10, 2018 6:53 PM)&#39;</span><span class="p">).</span><span class="nx">then</span><span class="p">(</span><span class="nx">response</span> <span class="p">=&gt;</span> <span class="p">{</span>
-    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">response</span><span class="p">)</span>
-<span class="p">})</span>
+<div class="codehilite"><pre><span></span><span class="x">lxc.containers.snapshots.info(&#39;local&#39;, &#39;my-container&#39;, &#39;my-container (April 10, 2018 6:53 PM)&#39;).then(response =&gt; {</span>
+<span class="x">    console.log(response)</span>
+<span class="x">})</span>
 </pre></div>
 
 
@@ -762,12 +762,12 @@
 </tr>
 </tbody>
 </table>
-<div class="codehilite"><pre><span></span><span class="nx">lxc</span><span class="p">.</span><span class="nx">containers</span><span class="p">.</span><span class="nx">snapshots</span><span class="p">.</span><span class="nx">create</span><span class="p">(</span><span class="s1">&#39;local&#39;</span><span class="p">,</span> <span class="s1">&#39;my-container&#39;</span><span class="p">,</span> <span class="p">{</span>
-    <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;my-snapshot&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;stateful&quot;</span><span class="o">:</span> <span class="kc">true</span>
-<span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="nx">response</span> <span class="p">=&gt;</span> <span class="p">{</span>
-    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">response</span><span class="p">)</span>
-<span class="p">})</span>
+<div class="codehilite"><pre><span></span><span class="x">lxc.containers.snapshots.create(&#39;local&#39;, &#39;my-container&#39;, {</span>
+<span class="x">    &quot;name&quot;: &quot;my-snapshot&quot;,</span>
+<span class="x">    &quot;stateful&quot;: true</span>
+<span class="x">}).then(response =&gt; {</span>
+<span class="x">    console.log(response)</span>
+<span class="x">})</span>
 </pre></div>
 
 
@@ -837,9 +837,9 @@
 </tr>
 </tbody>
 </table>
-<div class="codehilite"><pre><span></span><span class="nx">lxc</span><span class="p">.</span><span class="nx">containers</span><span class="p">.</span><span class="nx">snapshots</span><span class="p">.</span><span class="nx">rename</span><span class="p">(</span><span class="s1">&#39;local&#39;</span><span class="p">,</span> <span class="s1">&#39;my-container&#39;</span><span class="p">,</span> <span class="s1">&#39;my-snapshot-name&#39;</span><span class="p">,</span> <span class="s1">&#39;new-snapshot-name&#39;</span><span class="p">).</span><span class="nx">then</span><span class="p">(</span><span class="nx">response</span> <span class="p">=&gt;</span> <span class="p">{</span>
-    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">response</span><span class="p">)</span>
-<span class="p">})</span>
+<div class="codehilite"><pre><span></span><span class="x">lxc.containers.snapshots.rename(&#39;local&#39;, &#39;my-container&#39;, &#39;my-snapshot-name&#39;, &#39;new-snapshot-name&#39;).then(response =&gt; {</span>
+<span class="x">    console.log(response)</span>
+<span class="x">})</span>
 </pre></div>
 
 
@@ -902,9 +902,9 @@
 </tr>
 </tbody>
 </table>
-<div class="codehilite"><pre><span></span><span class="nx">lxc</span><span class="p">.</span><span class="nx">containers</span><span class="p">.</span><span class="nx">snapshots</span><span class="p">.</span><span class="k">delete</span><span class="p">(</span><span class="s1">&#39;local&#39;</span><span class="p">,</span> <span class="s1">&#39;my-container&#39;</span><span class="p">,</span> <span class="s1">&#39;my-snapshot-name&#39;</span><span class="p">).</span><span class="nx">then</span><span class="p">(</span><span class="nx">response</span> <span class="p">=&gt;</span> <span class="p">{</span>
-    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">response</span><span class="p">)</span>
-<span class="p">})</span>
+<div class="codehilite"><pre><span></span><span class="x">lxc.containers.snapshots.delete(&#39;local&#39;, &#39;my-container&#39;, &#39;my-snapshot-name&#39;).then(response =&gt; {</span>
+<span class="x">    console.log(response)</span>
+<span class="x">})</span>
 </pre></div>
 
 
@@ -965,9 +965,9 @@
 </tr>
 </tbody>
 </table>
-<div class="codehilite"><pre><span></span><span class="nx">lxc</span><span class="p">.</span><span class="nx">containers</span><span class="p">.</span><span class="nx">snapshots</span><span class="p">.</span><span class="nx">restore</span><span class="p">(</span><span class="s1">&#39;local&#39;</span><span class="p">,</span> <span class="s1">&#39;my-container&#39;</span><span class="p">,</span> <span class="s1">&#39;my-snapshot-name&#39;</span><span class="p">).</span><span class="nx">then</span><span class="p">(</span><span class="nx">response</span> <span class="p">=&gt;</span> <span class="p">{</span>
-    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">response</span><span class="p">)</span>
-<span class="p">})</span>
+<div class="codehilite"><pre><span></span><span class="x">lxc.containers.snapshots.restore(&#39;local&#39;, &#39;my-container&#39;, &#39;my-snapshot-name&#39;).then(response =&gt; {</span>
+<span class="x">    console.log(response)</span>
+<span class="x">})</span>
 </pre></div>
 
 

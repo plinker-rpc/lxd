@@ -530,9 +530,7 @@
 </tr>
 </tbody>
 </table>
-<div class="codehilite"><pre><span></span><span class="nx">lxc</span><span class="p">.</span><span class="nx">containers</span><span class="p">.</span><span class="nx">metadata</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;local&#39;</span><span class="p">,</span> <span class="s1">&#39;my-container&#39;</span><span class="p">).</span><span class="nx">then</span><span class="p">(</span><span class="nx">response</span> <span class="p">=&gt;</span> <span class="p">{</span>
-    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">response</span><span class="p">);</span>
-<span class="p">})</span>
+<div class="codehilite"><pre><span></span><span class="x">$client-&gt;lxc-&gt;containers-&gt;metadata-&gt;get(&#39;local&#39;, &#39;my-container&#39;);</span>
 </pre></div>
 
 
@@ -641,70 +639,68 @@
 </tr>
 </tbody>
 </table>
-<div class="codehilite"><pre><span></span><span class="nx">lxc</span><span class="p">.</span><span class="nx">containers</span><span class="p">.</span><span class="nx">metadata</span><span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="s1">&#39;local&#39;</span><span class="p">,</span> <span class="s1">&#39;my-container&#39;</span><span class="p">,</span> <span class="p">{</span>
-    <span class="s2">&quot;architecture&quot;</span><span class="o">:</span> <span class="s2">&quot;x86_64&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;creation_date&quot;</span><span class="o">:</span> <span class="mi">1522920368</span><span class="p">,</span>
-    <span class="s2">&quot;expiry_date&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
-    <span class="s2">&quot;properties&quot;</span><span class="o">:</span> <span class="p">{</span>
-        <span class="s2">&quot;architecture&quot;</span><span class="o">:</span> <span class="s2">&quot;x86_64&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;description&quot;</span><span class="o">:</span> <span class="s2">&quot;Ubuntu 16.04 LTS server (20180405)&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;os&quot;</span><span class="o">:</span> <span class="s2">&quot;ubuntu&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;release&quot;</span><span class="o">:</span> <span class="s2">&quot;xenial&quot;</span>
-    <span class="p">},</span>
-    <span class="s2">&quot;templates&quot;</span><span class="o">:</span> <span class="p">{</span>
-        <span class="s2">&quot;/etc/hostname&quot;</span><span class="o">:</span> <span class="p">{</span>
-            <span class="s2">&quot;create_only&quot;</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
-            <span class="s2">&quot;properties&quot;</span><span class="o">:</span> <span class="kc">null</span><span class="p">,</span>
-            <span class="s2">&quot;template&quot;</span><span class="o">:</span> <span class="s2">&quot;hostname.tpl&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;when&quot;</span><span class="o">:</span> <span class="p">[</span>
-                <span class="s2">&quot;create&quot;</span><span class="p">,</span>
-                <span class="s2">&quot;copy&quot;</span>
-            <span class="p">]</span>
-        <span class="p">},</span>
-        <span class="s2">&quot;/var/lib/cloud/seed/nocloud-net/meta-data&quot;</span><span class="o">:</span> <span class="p">{</span>
-            <span class="s2">&quot;create_only&quot;</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
-            <span class="s2">&quot;properties&quot;</span><span class="o">:</span> <span class="kc">null</span><span class="p">,</span>
-            <span class="s2">&quot;template&quot;</span><span class="o">:</span> <span class="s2">&quot;cloud-init-meta.tpl&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;when&quot;</span><span class="o">:</span> <span class="p">[</span>
-                <span class="s2">&quot;create&quot;</span><span class="p">,</span>
-                <span class="s2">&quot;copy&quot;</span>
-            <span class="p">]</span>
-        <span class="p">},</span>
-        <span class="s2">&quot;/var/lib/cloud/seed/nocloud-net/network-config&quot;</span><span class="o">:</span> <span class="p">{</span>
-            <span class="s2">&quot;create_only&quot;</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
-            <span class="s2">&quot;properties&quot;</span><span class="o">:</span> <span class="kc">null</span><span class="p">,</span>
-            <span class="s2">&quot;template&quot;</span><span class="o">:</span> <span class="s2">&quot;cloud-init-network.tpl&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;when&quot;</span><span class="o">:</span> <span class="p">[</span>
-                <span class="s2">&quot;create&quot;</span><span class="p">,</span>
-                <span class="s2">&quot;copy&quot;</span>
-            <span class="p">]</span>
-        <span class="p">},</span>
-        <span class="s2">&quot;/var/lib/cloud/seed/nocloud-net/user-data&quot;</span><span class="o">:</span> <span class="p">{</span>
-            <span class="s2">&quot;create_only&quot;</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
-            <span class="s2">&quot;properties&quot;</span><span class="o">:</span> <span class="p">{</span>
-                <span class="s2">&quot;default&quot;</span><span class="o">:</span> <span class="s2">&quot;#cloud-config\n{}\n&quot;</span>
-            <span class="p">},</span>
-            <span class="s2">&quot;template&quot;</span><span class="o">:</span> <span class="s2">&quot;cloud-init-user.tpl&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;when&quot;</span><span class="o">:</span> <span class="p">[</span>
-                <span class="s2">&quot;create&quot;</span><span class="p">,</span>
-                <span class="s2">&quot;copy&quot;</span>
-            <span class="p">]</span>
-        <span class="p">},</span>
-        <span class="s2">&quot;/var/lib/cloud/seed/nocloud-net/vendor-data&quot;</span><span class="o">:</span> <span class="p">{</span>
-            <span class="s2">&quot;create_only&quot;</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
-            <span class="s2">&quot;properties&quot;</span><span class="o">:</span> <span class="p">{</span>
-                <span class="s2">&quot;default&quot;</span><span class="o">:</span> <span class="s2">&quot;#cloud-config\n{}\n&quot;</span>
-            <span class="p">},</span>
-            <span class="s2">&quot;template&quot;</span><span class="o">:</span> <span class="s2">&quot;cloud-init-vendor.tpl&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;when&quot;</span><span class="o">:</span> <span class="p">[</span>
-                <span class="s2">&quot;create&quot;</span><span class="p">,</span>
-                <span class="s2">&quot;copy&quot;</span>
-            <span class="p">]</span>
-        <span class="p">}</span>
-    <span class="p">}</span>
-<span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="nx">response</span> <span class="p">=&gt;</span> <span class="p">{</span>
-    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">response</span><span class="p">);</span>
-<span class="p">})</span>
+<div class="codehilite"><pre><span></span><span class="x">$client-&gt;lxc-&gt;containers-&gt;metadata-&gt;replace(&#39;local&#39;, &#39;my-container&#39;, [</span>
+<span class="x">    &quot;architecture&quot; =&gt; &quot;x86_64&quot;,</span>
+<span class="x">    &quot;creation_date&quot; =&gt; 1522920368,</span>
+<span class="x">    &quot;expiry_date&quot; =&gt; 0,</span>
+<span class="x">    &quot;properties&quot; =&gt; [</span>
+<span class="x">        &quot;architecture&quot; =&gt; &quot;x86_64&quot;,</span>
+<span class="x">        &quot;description&quot; =&gt; &quot;Ubuntu 16.04 LTS server (20180405)&quot;,</span>
+<span class="x">        &quot;os&quot; =&gt; &quot;ubuntu&quot;,</span>
+<span class="x">        &quot;release&quot; =&gt; &quot;xenial&quot;</span>
+<span class="x">    ],</span>
+<span class="x">    &quot;templates&quot; =&gt; [</span>
+<span class="x">        &quot;/etc/hostname&quot; =&gt; [</span>
+<span class="x">            &quot;create_only&quot; =&gt; false,</span>
+<span class="x">            &quot;properties&quot; =&gt; null,</span>
+<span class="x">            &quot;template&quot; =&gt; &quot;hostname.tpl&quot;,</span>
+<span class="x">            &quot;when&quot;: [</span>
+<span class="x">                &quot;create&quot;,</span>
+<span class="x">                &quot;copy&quot;</span>
+<span class="x">            ]</span>
+<span class="x">        ],</span>
+<span class="x">        &quot;/var/lib/cloud/seed/nocloud-net/meta-data&quot; =&gt; [</span>
+<span class="x">            &quot;create_only&quot; =&gt; false,</span>
+<span class="x">            &quot;properties&quot; =&gt; null,</span>
+<span class="x">            &quot;template&quot; =&gt; &quot;cloud-init-meta.tpl&quot;,</span>
+<span class="x">            &quot;when&quot; =&gt; [</span>
+<span class="x">                &quot;create&quot;,</span>
+<span class="x">                &quot;copy&quot;</span>
+<span class="x">            ]</span>
+<span class="x">        ],</span>
+<span class="x">        &quot;/var/lib/cloud/seed/nocloud-net/network-config&quot; =&gt; [</span>
+<span class="x">            &quot;create_only&quot; =&gt; false,</span>
+<span class="x">            &quot;properties&quot; =&gt; null,</span>
+<span class="x">            &quot;template&quot; =&gt; &quot;cloud-init-network.tpl&quot;,</span>
+<span class="x">            &quot;when&quot; =&gt; [</span>
+<span class="x">                &quot;create&quot;,</span>
+<span class="x">                &quot;copy&quot;</span>
+<span class="x">            ]</span>
+<span class="x">        ],</span>
+<span class="x">        &quot;/var/lib/cloud/seed/nocloud-net/user-data&quot; =&gt; [</span>
+<span class="x">            &quot;create_only&quot; =&gt; false,</span>
+<span class="x">            &quot;properties&quot; =&gt; [</span>
+<span class="x">                &quot;default&quot; =&gt; &quot;#cloud-config\n{}\n&quot;</span>
+<span class="x">            ],</span>
+<span class="x">            &quot;template&quot; =&gt; &quot;cloud-init-user.tpl&quot;,</span>
+<span class="x">            &quot;when&quot; =&gt; [</span>
+<span class="x">                &quot;create&quot;,</span>
+<span class="x">                &quot;copy&quot;</span>
+<span class="x">            ]</span>
+<span class="x">        ],</span>
+<span class="x">        &quot;/var/lib/cloud/seed/nocloud-net/vendor-data&quot; =&gt; [</span>
+<span class="x">            &quot;create_only&quot; =&gt; false,</span>
+<span class="x">            &quot;properties&quot; =&gt; [</span>
+<span class="x">                &quot;default&quot; =&gt; &quot;#cloud-config\n{}\n&quot;</span>
+<span class="x">            ],</span>
+<span class="x">            &quot;template&quot; =&gt; &quot;cloud-init-vendor.tpl&quot;,</span>
+<span class="x">            &quot;when&quot; =&gt; [</span>
+<span class="x">                &quot;create&quot;,</span>
+<span class="x">                &quot;copy&quot;</span>
+<span class="x">            ]</span>
+<span class="x">        ]</span>
+<span class="x">    ]</span>
+<span class="x">]);</span>
 </pre></div>
 
 

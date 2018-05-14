@@ -594,9 +594,7 @@
 </tr>
 </tbody>
 </table>
-<div class="codehilite"><pre><span></span><span class="nx">lxc</span><span class="p">.</span><span class="nx">networks</span><span class="p">.</span><span class="nx">list</span><span class="p">(</span><span class="s1">&#39;local&#39;</span><span class="p">).</span><span class="nx">then</span><span class="p">(</span><span class="nx">response</span> <span class="p">=&gt;</span> <span class="p">{</span>
-    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">response</span><span class="p">)</span>
-<span class="p">})</span>
+<div class="codehilite"><pre><span></span><span class="x">$client-&gt;lxc-&gt;networks-&gt;list(&#39;local&#39;);</span>
 </pre></div>
 
 
@@ -641,9 +639,7 @@
 </tr>
 </tbody>
 </table>
-<div class="codehilite"><pre><span></span><span class="nx">lxc</span><span class="p">.</span><span class="nx">networks</span><span class="p">.</span><span class="nx">info</span><span class="p">(</span><span class="s1">&#39;local&#39;</span><span class="p">,</span> <span class="s1">&#39;lxdbr0&#39;</span><span class="p">).</span><span class="nx">then</span><span class="p">(</span><span class="nx">response</span> <span class="p">=&gt;</span> <span class="p">{</span>
-    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">response</span><span class="p">)</span>
-<span class="p">})</span>
+<div class="codehilite"><pre><span></span><span class="x">$client-&gt;lxc-&gt;networks-&gt;info(&#39;local&#39;, &#39;lxdbr0&#39;);</span>
 </pre></div>
 
 
@@ -699,17 +695,15 @@
 </tr>
 </tbody>
 </table>
-<div class="codehilite"><pre><span></span><span class="nx">lxc</span><span class="p">.</span><span class="nx">networks</span><span class="p">.</span><span class="nx">create</span><span class="p">(</span><span class="s1">&#39;local&#39;</span><span class="p">,</span> <span class="p">{</span>
-    <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;my-network&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;description&quot;</span><span class="o">:</span> <span class="s2">&quot;My network&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;config&quot;</span><span class="o">:</span> <span class="p">{</span>
-        <span class="s2">&quot;ipv4.address&quot;</span><span class="o">:</span> <span class="s2">&quot;none&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;ipv6.address&quot;</span><span class="o">:</span> <span class="s2">&quot;2001:470:b368:4242::1/64&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;ipv6.nat&quot;</span><span class="o">:</span> <span class="s2">&quot;true&quot;</span>
-    <span class="p">}</span>
-<span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="nx">response</span> <span class="p">=&gt;</span> <span class="p">{</span>
-    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">response</span><span class="p">)</span>
-<span class="p">})</span>
+<div class="codehilite"><pre><span></span><span class="x">$client-&gt;lxc-&gt;networks-&gt;create(&#39;local&#39;, [</span>
+<span class="x">    &quot;name&quot; =&gt; &quot;my-network&quot;,</span>
+<span class="x">    &quot;description&quot; =&gt; &quot;My network&quot;,</span>
+<span class="x">    &quot;config&quot; =&gt; [</span>
+<span class="x">        &quot;ipv4.address&quot; =&gt; &quot;none&quot;,</span>
+<span class="x">        &quot;ipv6.address&quot; =&gt; &quot;2001:470:b368:4242::1/64&quot;,</span>
+<span class="x">        &quot;ipv6.nat&quot; =&gt; &quot;true&quot;</span>
+<span class="x">    ]</span>
+<span class="x">]);</span>
 </pre></div>
 
 
@@ -759,15 +753,13 @@
 </tr>
 </tbody>
 </table>
-<div class="codehilite"><pre><span></span><span class="nx">lxc</span><span class="p">.</span><span class="nx">networks</span><span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="s1">&#39;local&#39;</span><span class="p">,</span> <span class="s1">&#39;my-new-network&#39;</span><span class="p">,</span> <span class="p">{</span>
-    <span class="s2">&quot;config&quot;</span><span class="o">:</span> <span class="p">{</span>
-        <span class="s2">&quot;bridge.driver&quot;</span><span class="o">:</span> <span class="s2">&quot;openvswitch&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;ipv4.address&quot;</span><span class="o">:</span> <span class="s2">&quot;10.0.3.1/24&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;ipv6.address&quot;</span><span class="o">:</span> <span class="s2">&quot;fd1:6997:4939:495d::1/64&quot;</span>
-    <span class="p">}</span>
-<span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="nx">response</span> <span class="p">=&gt;</span> <span class="p">{</span>
-    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">response</span><span class="p">)</span>
-<span class="p">})</span>
+<div class="codehilite"><pre><span></span><span class="x">$client-&gt;lxc-&gt;networks-&gt;replace(&#39;local&#39;, [</span>
+<span class="x">    &quot;config&quot; =&gt; [</span>
+<span class="x">        &quot;ipv4.address&quot; =&gt; &quot;none&quot;,</span>
+<span class="x">        &quot;ipv6.address&quot; =&gt; &quot;2001:470:b368:4242::1/64&quot;,</span>
+<span class="x">        &quot;ipv6.nat&quot; =&gt; &quot;true&quot;</span>
+<span class="x">    ]</span>
+<span class="x">]);</span>
 </pre></div>
 
 
@@ -817,13 +809,13 @@
 </tr>
 </tbody>
 </table>
-<div class="codehilite"><pre><span></span><span class="nx">lxc</span><span class="p">.</span><span class="nx">networks</span><span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="s1">&#39;local&#39;</span><span class="p">,</span> <span class="s1">&#39;my-new-network&#39;</span><span class="p">,</span> <span class="p">{</span>
-    <span class="s2">&quot;config&quot;</span><span class="o">:</span> <span class="p">{</span>
-        <span class="s2">&quot;dns.mode&quot;</span><span class="o">:</span> <span class="s2">&quot;dynamic&quot;</span>
-    <span class="p">}</span>
-<span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="nx">response</span> <span class="p">=&gt;</span> <span class="p">{</span>
-    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">response</span><span class="p">)</span>
-<span class="p">})</span>
+<div class="codehilite"><pre><span></span><span class="x">$client-&gt;lxc-&gt;networks-&gt;update(&#39;local&#39;, [</span>
+<span class="x">    &quot;name&quot; =&gt; &quot;my-network&quot;,</span>
+<span class="x">    &quot;description&quot; =&gt; &quot;My network&quot;,</span>
+<span class="x">    &quot;config&quot; =&gt; [</span>
+<span class="x">         &quot;dns.mode&quot; =&gt; &quot;dynamic&quot;</span>
+<span class="x">    ]</span>
+<span class="x">]);</span>
 </pre></div>
 
 
@@ -873,9 +865,7 @@
 </tr>
 </tbody>
 </table>
-<div class="codehilite"><pre><span></span><span class="nx">lxc</span><span class="p">.</span><span class="nx">networks</span><span class="p">.</span><span class="nx">rename</span><span class="p">(</span><span class="s1">&#39;local&#39;</span><span class="p">,</span> <span class="s1">&#39;old-name&#39;</span><span class="p">,</span> <span class="s1">&#39;new-name&#39;</span><span class="p">).</span><span class="nx">then</span><span class="p">(</span><span class="nx">response</span> <span class="p">=&gt;</span> <span class="p">{</span>
-    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">response</span><span class="p">)</span>
-<span class="p">})</span>
+<div class="codehilite"><pre><span></span><span class="x">$client-&gt;lxc-&gt;networks-&gt;rename(&#39;local&#39;, &#39;old-name&#39;, &#39;new-name&#39;);</span>
 </pre></div>
 
 
@@ -919,9 +909,7 @@
 </tr>
 </tbody>
 </table>
-<div class="codehilite"><pre><span></span><span class="nx">lxc</span><span class="p">.</span><span class="nx">networks</span><span class="p">.</span><span class="k">delete</span><span class="p">(</span><span class="s1">&#39;local&#39;</span><span class="p">,</span> <span class="s1">&#39;network-name&#39;</span><span class="p">).</span><span class="nx">then</span><span class="p">(</span><span class="nx">response</span> <span class="p">=&gt;</span> <span class="p">{</span>
-    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">response</span><span class="p">)</span>
-<span class="p">})</span>
+<div class="codehilite"><pre><span></span><span class="x">$client-&gt;lxc-&gt;networks-&gt;delete(&#39;local&#39;, &#39;network-name&#39;);</span>
 </pre></div>
 
 

@@ -566,14 +566,10 @@
 </tr>
 </tbody>
 </table>
-<div class="codehilite"><pre><span></span><span class="nx">lxc</span><span class="p">.</span><span class="nx">images</span><span class="p">.</span><span class="nx">list</span><span class="p">(</span><span class="s1">&#39;images&#39;</span><span class="p">).</span><span class="nx">then</span><span class="p">(</span><span class="nx">response</span> <span class="p">=&gt;</span> <span class="p">{</span>
-  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">response</span><span class="p">)</span>
-<span class="p">})</span>
+<div class="codehilite"><pre><span></span><span class="x">$client-&gt;lxc-&gt;images-&gt;list(&#39;images&#39;);</span>
 
-<span class="c1">// filtering by architecture</span>
-<span class="nx">lxc</span><span class="p">.</span><span class="nx">images</span><span class="p">.</span><span class="nx">list</span><span class="p">(</span><span class="s1">&#39;images&#39;</span><span class="p">,</span> <span class="s1">&#39;architecture=&quot;&#39;</span> <span class="o">+</span> <span class="p">[</span><span class="s1">&#39;x86_64&#39;</span><span class="p">,</span> <span class="s1">&#39;i686&#39;</span><span class="p">,</span> <span class="s1">&#39;amd64&#39;</span><span class="p">].</span><span class="nx">join</span><span class="p">(</span><span class="s1">&#39;|&#39;</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;&quot;&#39;</span><span class="p">).</span><span class="nx">then</span><span class="p">(</span><span class="nx">response</span> <span class="p">=&gt;</span> <span class="p">{</span>
-  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">response</span><span class="p">)</span>
-<span class="p">})</span>
+<span class="x">// filtering by architecture</span>
+<span class="x">$client-&gt;lxc-&gt;images-&gt;list(&#39;images&#39;, &#39;architecture=&quot;&#39;.implode(&#39;|&#39;, [&#39;x86_64&#39;, &#39;i686&#39;, &#39;amd64&#39;]).&#39;&quot;&#39;);</span>
 </pre></div>
 
 
@@ -656,9 +652,7 @@
 </tr>
 </tbody>
 </table>
-<div class="codehilite"><pre><span></span><span class="nx">lxc</span><span class="p">.</span><span class="nx">images</span><span class="p">.</span><span class="nx">info</span><span class="p">(</span><span class="s1">&#39;local&#39;</span><span class="p">,</span> <span class="s1">&#39;be7cec7c948958adfbb9bc7dbd292762d2388cc883466815fc2b6bc06bf06f5a&#39;</span><span class="p">).</span><span class="nx">then</span><span class="p">(</span><span class="nx">response</span> <span class="p">=&gt;</span> <span class="p">{</span>
-    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">response</span><span class="p">)</span>
-<span class="p">})</span>
+<div class="codehilite"><pre><span></span><span class="x">$client-&gt;lxc-&gt;images-&gt;info(&#39;local&#39;, &#39;be7cec7c948958adfbb9bc7dbd292762d2388cc883466815fc2b6bc06bf06f5a&#39;);</span>
 </pre></div>
 
 
@@ -734,18 +728,16 @@
 </tr>
 </tbody>
 </table>
-<div class="codehilite"><pre><span></span><span class="nx">lxc</span><span class="p">.</span><span class="nx">images</span><span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="s1">&#39;local&#39;</span><span class="p">,</span> <span class="s1">&#39;be7cec7c948958adfbb9bc7dbd292762d2388cc883466815fc2b6bc06bf06f5a&#39;</span><span class="p">,</span> <span class="p">{</span>
-    <span class="s2">&quot;auto_update&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
-    <span class="s2">&quot;properties&quot;</span><span class="o">:</span> <span class="p">{</span>
-        <span class="s2">&quot;architecture&quot;</span><span class="o">:</span> <span class="s2">&quot;x86_64&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;description&quot;</span><span class="o">:</span> <span class="s2">&quot;Ubuntu 16.04 LTS server (20160201)&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;os&quot;</span><span class="o">:</span> <span class="s2">&quot;ubuntu&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;release&quot;</span><span class="o">:</span> <span class="s2">&quot;trusty&quot;</span>
-    <span class="p">},</span>
-    <span class="s2">&quot;public&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
-<span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="nx">response</span> <span class="p">=&gt;</span> <span class="p">{</span>
-    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">response</span><span class="p">)</span>
-<span class="p">})</span>
+<div class="codehilite"><pre><span></span><span class="x">$client-&gt;lxc-&gt;images-&gt;replace(&#39;local&#39;, &#39;be7cec7c948958adfbb9bc7dbd292762d2388cc883466815fc2b6bc06bf06f5a&#39;, [</span>
+<span class="x">    &quot;auto_update&quot; =&gt; true,</span>
+<span class="x">    &quot;properties&quot; =&gt; [</span>
+<span class="x">        &quot;architecture&quot; =&gt; &quot;x86_64&quot;,</span>
+<span class="x">        &quot;description&quot; =&gt; &quot;Ubuntu 16.04 LTS server (20160201)&quot;,</span>
+<span class="x">        &quot;os&quot; =&gt; &quot;ubuntu&quot;,</span>
+<span class="x">        &quot;release&quot; =&gt; &quot;trusty&quot;</span>
+<span class="x">    ],</span>
+<span class="x">    &quot;public&quot; =&gt; true</span>
+<span class="x">]);</span>
 </pre></div>
 
 
@@ -795,18 +787,16 @@
 </tr>
 </tbody>
 </table>
-<div class="codehilite"><pre><span></span><span class="nx">lxc</span><span class="p">.</span><span class="nx">images</span><span class="p">.</span><span class="nx">update</span><span class="p">(</span><span class="s1">&#39;local&#39;</span><span class="p">,</span> <span class="s1">&#39;be7cec7c948958adfbb9bc7dbd292762d2388cc883466815fc2b6bc06bf06f5a&#39;</span><span class="p">,</span> <span class="p">{</span>
-    <span class="s2">&quot;auto_update&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
-    <span class="s2">&quot;properties&quot;</span><span class="o">:</span> <span class="p">{</span>
-        <span class="s2">&quot;architecture&quot;</span><span class="o">:</span> <span class="s2">&quot;x86_64&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;description&quot;</span><span class="o">:</span> <span class="s2">&quot;Ubuntu 16.04 LTS server (20160201)&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;os&quot;</span><span class="o">:</span> <span class="s2">&quot;ubuntu&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;release&quot;</span><span class="o">:</span> <span class="s2">&quot;trusty&quot;</span>
-    <span class="p">},</span>
-    <span class="s2">&quot;public&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
-<span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="nx">response</span> <span class="p">=&gt;</span> <span class="p">{</span>
-    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">response</span><span class="p">)</span>
-<span class="p">})</span>
+<div class="codehilite"><pre><span></span><span class="x">$client-&gt;lxc-&gt;images-&gt;update(&#39;local&#39;, &#39;be7cec7c948958adfbb9bc7dbd292762d2388cc883466815fc2b6bc06bf06f5a&#39;, [</span>
+<span class="x">    &quot;auto_update&quot; =&gt; true,</span>
+<span class="x">    &quot;properties&quot; =&gt; [</span>
+<span class="x">        &quot;architecture&quot; =&gt; &quot;x86_64&quot;,</span>
+<span class="x">        &quot;description&quot; =&gt; &quot;Ubuntu 16.04 LTS server (20160201)&quot;,</span>
+<span class="x">        &quot;os&quot; =&gt; &quot;ubuntu&quot;,</span>
+<span class="x">        &quot;release&quot; =&gt; &quot;trusty&quot;</span>
+<span class="x">    ],</span>
+<span class="x">    &quot;public&quot; =&gt; true</span>
+<span class="x">]);</span>
 </pre></div>
 
 
@@ -850,9 +840,7 @@
 </tr>
 </tbody>
 </table>
-<div class="codehilite"><pre><span></span><span class="nx">lxc</span><span class="p">.</span><span class="nx">images</span><span class="p">.</span><span class="k">delete</span><span class="p">(</span><span class="s1">&#39;local&#39;</span><span class="p">,</span> <span class="s1">&#39;be7cec7c948958adfbb9bc7dbd292762d2388cc883466815fc2b6bc06bf06f5a&#39;</span><span class="p">).</span><span class="nx">then</span><span class="p">(</span><span class="nx">response</span> <span class="p">=&gt;</span> <span class="p">{</span>
-    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">response</span><span class="p">)</span>
-<span class="p">})</span>
+<div class="codehilite"><pre><span></span><span class="x">$client-&gt;lxc-&gt;images-&gt;update(&#39;local&#39;, &#39;be7cec7c948958adfbb9bc7dbd292762d2388cc883466815fc2b6bc06bf06f5a&#39;);</span>
 </pre></div>
 
 

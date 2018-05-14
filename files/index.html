@@ -553,9 +553,7 @@ fetch them.</p>
 </tr>
 </tbody>
 </table>
-<div class="codehilite"><pre><span></span><span class="nx">lxc</span><span class="p">.</span><span class="nx">containers</span><span class="p">.</span><span class="nx">files</span><span class="p">.</span><span class="nx">list</span><span class="p">(</span><span class="s1">&#39;local&#39;</span><span class="p">,</span> <span class="s1">&#39;my-container&#39;</span><span class="p">,</span> <span class="s1">&#39;/&#39;</span><span class="p">).</span><span class="nx">then</span><span class="p">(</span><span class="nx">response</span> <span class="p">=&gt;</span> <span class="p">{</span>
-    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">response</span><span class="p">);</span>
-<span class="p">})</span>
+<div class="codehilite"><pre><span></span><span class="x">$client-&gt;lxc-&gt;containers-&gt;files-&gt;list(&#39;local&#39;, &#39;container-name&#39;, &#39;/&#39;);</span>
 </pre></div>
 
 
@@ -629,15 +627,11 @@ fetch them.</p>
     recursively upload, otherwise it will set mode <code class="codehilite">755</code> if folder or <code class="codehilite">644</code> if file.
     All files are uploaded as uid/gid root user.
 </em></p>
-<div class="codehilite"><pre><span></span><span class="c1">// single file</span>
-<span class="nx">lxc</span><span class="p">.</span><span class="nx">containers</span><span class="p">.</span><span class="nx">files</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="s1">&#39;local&#39;</span><span class="p">,</span> <span class="s1">&#39;my-container&#39;</span><span class="p">,</span> <span class="s1">&#39;/local/path/to/file.ext&#39;</span><span class="p">,</span> <span class="s1">&#39;/path/to/file.ext&#39;</span><span class="p">).</span><span class="nx">then</span><span class="p">(</span><span class="nx">response</span> <span class="p">=&gt;</span> <span class="p">{</span>
-    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">response</span><span class="p">);</span>
-<span class="p">})</span>
+<div class="codehilite"><pre><span></span><span class="x">// single file</span>
+<span class="x">$client-&gt;lxc-&gt;containers-&gt;files-&gt;push(&#39;local&#39;, &#39;my-container&#39;, &#39;/local/path/to/file.ext&#39;, &#39;/path/to/file.ext&#39;);</span>
 
-<span class="c1">// entire directory</span>
-<span class="nx">lxc</span><span class="p">.</span><span class="nx">containers</span><span class="p">.</span><span class="nx">files</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="s1">&#39;local&#39;</span><span class="p">,</span> <span class="s1">&#39;my-container&#39;</span><span class="p">,</span> <span class="s1">&#39;/local/path/to/folder&#39;</span><span class="p">,</span> <span class="s1">&#39;/path/to/folder&#39;</span><span class="p">).</span><span class="nx">then</span><span class="p">(</span><span class="nx">response</span> <span class="p">=&gt;</span> <span class="p">{</span>
-    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">response</span><span class="p">);</span>
-<span class="p">})</span>
+<span class="x">// entire directory</span>
+<span class="x">$client-&gt;lxc-&gt;containers-&gt;files-&gt;push(&#39;local&#39;, &#39;my-container&#39;, &#39;/local/path/to/folder&#39;, &#39;/path/to/folder&#39;);</span>
 </pre></div>
 
 
@@ -682,9 +676,7 @@ to use that in future.</p>
 </tr>
 </tbody>
 </table>
-<div class="codehilite"><pre><span></span><span class="nx">lxc</span><span class="p">.</span><span class="nx">containers</span><span class="p">.</span><span class="nx">files</span><span class="p">.</span><span class="nx">pull</span><span class="p">(</span><span class="s1">&#39;local&#39;</span><span class="p">,</span> <span class="s1">&#39;my-container&#39;</span><span class="p">,</span> <span class="s1">&#39;/path/to/file&#39;</span><span class="p">).</span><span class="nx">then</span><span class="p">(</span><span class="nx">response</span> <span class="p">=&gt;</span> <span class="p">{</span>
-    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">response</span><span class="p">);</span>
-<span class="p">})</span>
+<div class="codehilite"><pre><span></span><span class="x">$client-&gt;lxc-&gt;containers-&gt;files-&gt;pull(&#39;local&#39;, &#39;my-container&#39;, &#39;/path/to/file&#39;);</span>
 </pre></div>
 
 

@@ -552,9 +552,9 @@
 </tr>
 </tbody>
 </table>
-<div class="codehilite"><pre><span></span><span class="nx">lxc</span><span class="p">.</span><span class="nx">operations</span><span class="p">.</span><span class="nx">list</span><span class="p">(</span><span class="s1">&#39;local&#39;</span><span class="p">).</span><span class="nx">then</span><span class="p">(</span><span class="nx">response</span> <span class="p">=&gt;</span> <span class="p">{</span>
-  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">response</span><span class="p">)</span>
-<span class="p">})</span>
+<div class="codehilite"><pre><span></span><span class="x">lxc.operations.list(&#39;local&#39;).then(response =&gt; {</span>
+<span class="x">  console.log(response)</span>
+<span class="x">})</span>
 </pre></div>
 
 
@@ -599,9 +599,9 @@
 </tr>
 </tbody>
 </table>
-<div class="codehilite"><pre><span></span><span class="nx">lxc</span><span class="p">.</span><span class="nx">operations</span><span class="p">.</span><span class="nx">info</span><span class="p">(</span><span class="s1">&#39;local&#39;</span><span class="p">,</span> <span class="s1">&#39;092a8755-fd90-4ce4-bf91-9f87d03fd5bc&#39;</span><span class="p">).</span><span class="nx">then</span><span class="p">(</span><span class="nx">response</span> <span class="p">=&gt;</span> <span class="p">{</span>
-    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">response</span><span class="p">)</span>
-<span class="p">})</span>
+<div class="codehilite"><pre><span></span><span class="x">lxc.operations.info(&#39;local&#39;, &#39;092a8755-fd90-4ce4-bf91-9f87d03fd5bc&#39;).then(response =&gt; {</span>
+<span class="x">    console.log(response)</span>
+<span class="x">})</span>
 </pre></div>
 
 
@@ -660,9 +660,9 @@
 </tr>
 </tbody>
 </table>
-<div class="codehilite"><pre><span></span><span class="nx">lxc</span><span class="p">.</span><span class="nx">operations</span><span class="p">.</span><span class="k">delete</span><span class="p">(</span><span class="s1">&#39;local&#39;</span><span class="p">,</span> <span class="s1">&#39;092a8755-fd90-4ce4-bf91-9f87d03fd5bc&#39;</span><span class="p">).</span><span class="nx">then</span><span class="p">(</span><span class="nx">response</span> <span class="p">=&gt;</span> <span class="p">{</span>
-    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">response</span><span class="p">)</span>
-<span class="p">})</span>
+<div class="codehilite"><pre><span></span><span class="x">lxc.operations.delete(&#39;local&#39;, &#39;092a8755-fd90-4ce4-bf91-9f87d03fd5bc&#39;).then(response =&gt; {</span>
+<span class="x">    console.log(response)</span>
+<span class="x">})</span>
 </pre></div>
 
 

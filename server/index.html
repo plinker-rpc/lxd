@@ -574,9 +574,9 @@
 </tr>
 </tbody>
 </table>
-<div class="codehilite"><pre><span></span><span class="nx">lxc</span><span class="p">.</span><span class="nx">info</span><span class="p">(</span><span class="s1">&#39;local&#39;</span><span class="p">).</span><span class="nx">then</span><span class="p">(</span><span class="nx">response</span> <span class="p">=&gt;</span> <span class="p">{</span>
-    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">response</span><span class="p">)</span>
-<span class="p">})</span>
+<div class="codehilite"><pre><span></span><span class="x">lxc.info(&#39;local&#39;).then(response =&gt; {</span>
+<span class="x">    console.log(response)</span>
+<span class="x">})</span>
 </pre></div>
 
 
@@ -726,14 +726,14 @@
 </tbody>
 </table>
 <p><em>Replaces any existing config with the provided one.</em></p>
-<div class="codehilite"><pre><span></span><span class="nx">lxc</span><span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="s1">&#39;local&#39;</span><span class="p">,</span> <span class="p">{</span>
-    <span class="s2">&quot;config&quot;</span><span class="o">:</span> <span class="p">{</span>
-        <span class="s2">&quot;core.trust_password&quot;</span><span class="o">:</span> <span class="s2">&quot;my-new-password&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;core.https_address&quot;</span><span class="o">:</span> <span class="s2">&quot;[::]:8443&quot;</span>
-    <span class="p">}</span>
-<span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="nx">response</span> <span class="p">=&gt;</span> <span class="p">{</span>
-    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">response</span><span class="p">)</span>
-<span class="p">})</span>
+<div class="codehilite"><pre><span></span><span class="x">lxc.replace(&#39;local&#39;, {</span>
+<span class="x">    &quot;config&quot;: {</span>
+<span class="x">        &quot;core.trust_password&quot;: &quot;my-new-password&quot;,</span>
+<span class="x">        &quot;core.https_address&quot;: &quot;[::]:8443&quot;</span>
+<span class="x">    }</span>
+<span class="x">}).then(response =&gt; {</span>
+<span class="x">    console.log(response)</span>
+<span class="x">})</span>
 </pre></div>
 
 
@@ -772,14 +772,14 @@
 </tbody>
 </table>
 <p><em>Updates only the listed keys, rest remain intact.</em></p>
-<div class="codehilite"><pre><span></span><span class="nx">lxc</span><span class="p">.</span><span class="nx">update</span><span class="p">(</span><span class="s1">&#39;local&#39;</span><span class="p">,</span> <span class="p">{</span>
-    <span class="s2">&quot;config&quot;</span><span class="o">:</span> <span class="p">{</span>
-        <span class="s2">&quot;core.trust_password&quot;</span><span class="o">:</span> <span class="s2">&quot;my-new-password&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;core.https_address&quot;</span><span class="o">:</span> <span class="s2">&quot;[::]:8443&quot;</span>
-    <span class="p">}</span>
-<span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="nx">response</span> <span class="p">=&gt;</span> <span class="p">{</span>
-    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">response</span><span class="p">)</span>
-<span class="p">})</span>
+<div class="codehilite"><pre><span></span><span class="x">lxc.update(&#39;local&#39;, {</span>
+<span class="x">    &quot;config&quot;: {</span>
+<span class="x">        &quot;core.trust_password&quot;: &quot;my-new-password&quot;,</span>
+<span class="x">        &quot;core.https_address&quot;: &quot;[::]:8443&quot;</span>
+<span class="x">    }</span>
+<span class="x">}).then(response =&gt; {</span>
+<span class="x">    console.log(response)</span>
+<span class="x">})</span>
 </pre></div>
 
 
@@ -811,9 +811,9 @@
 </tr>
 </tbody>
 </table>
-<div class="codehilite"><pre><span></span><span class="nx">lxc</span><span class="p">.</span><span class="nx">server</span><span class="p">.</span><span class="nx">resources</span><span class="p">(</span><span class="s1">&#39;local&#39;</span><span class="p">).</span><span class="nx">then</span><span class="p">(</span><span class="nx">response</span> <span class="p">=&gt;</span> <span class="p">{</span>
-    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">response</span><span class="p">)</span>
-<span class="p">})</span>
+<div class="codehilite"><pre><span></span><span class="x">lxc.server.resources(&#39;local&#39;).then(response =&gt; {</span>
+<span class="x">    console.log(response)</span>
+<span class="x">})</span>
 </pre></div>
 
 
@@ -870,9 +870,9 @@
 </tr>
 </tbody>
 </table>
-<div class="codehilite"><pre><span></span><span class="nx">lxc</span><span class="p">.</span><span class="nx">server</span><span class="p">.</span><span class="nx">remotes</span><span class="p">().</span><span class="nx">then</span><span class="p">(</span><span class="nx">response</span> <span class="p">=&gt;</span> <span class="p">{</span>
-    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">response</span><span class="p">)</span>
-<span class="p">})</span>
+<div class="codehilite"><pre><span></span><span class="x">lxc.server.remotes().then(response =&gt; {</span>
+<span class="x">    console.log(response)</span>
+<span class="x">})</span>
 </pre></div>
 
 
@@ -907,9 +907,9 @@
 </tr>
 </tbody>
 </table>
-<div class="codehilite"><pre><span></span><span class="nx">lxc</span><span class="p">.</span><span class="nx">local</span><span class="p">(</span><span class="s1">&#39;lxc list&#39;</span><span class="p">).</span><span class="nx">then</span><span class="p">(</span><span class="nx">response</span> <span class="p">=&gt;</span> <span class="p">{</span>
-    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">response</span><span class="p">)</span>
-<span class="p">})</span>
+<div class="codehilite"><pre><span></span><span class="x">lxc.local(&#39;lxc list&#39;).then(response =&gt; {</span>
+<span class="x">    console.log(response)</span>
+<span class="x">})</span>
 </pre></div>
 
 
