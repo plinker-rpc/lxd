@@ -21,13 +21,24 @@ namespace Plinker\Lxd;
 
 use Plinker\Redbean\RedBean as Model;
 
-class Lxd extends Lib\Base
+class Containers extends Lib\Base
 {
     /**
      *
      */
     public function __construct(array $config = array())
     {
-        parent::__construct($config);
+        $this->config = $config;
+
+        // load models
+        $this->model = new Model($this->config['database']);
+    }
+
+    /**
+     *
+     */
+    public function list($remote = '')
+    {
+        return $this->query($remote.':/1.0/containers', 'GET', []);
     }
 }

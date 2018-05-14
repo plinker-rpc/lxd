@@ -18,6 +18,16 @@ Require this package with composer using the following command:
 $ composer require plinker/lxd
 ```
 
+## Setup
+
+The webserver user must be able to execute `lxc` commands, so add the user to sudoers file:
+
+```
+# User privilege specification
+root     ALL=(ALL:ALL) ALL
+www-data ALL=(ALL:ALL) NOPASSWD: /usr/bin/lxc
+```
+
 ### Usage example:
 
     <?php
