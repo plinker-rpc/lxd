@@ -183,49 +183,56 @@ class Base
     /**
      *
      */
-    public function list()
+    public function list($remote = 'local', $mutator = null)
     {
+        return $this->query($remote.':'.$this->endpoint, 'GET', [], $mutator);
     }
 
     /**
      *
      */
-    public function info()
+    public function info($remote = 'local', $name = '', $mutator = null)
     {
+        return $this->query($remote.':'.$this->endpoint.'/'.$name, 'GET', [], $mutator);
     }
 
     /**
      *
      */
-    public function create()
+    public function create($remote = 'local', $options = [], $mutator = null)
     {
+        return $this->query($remote.':'.$this->endpoint, 'POST', $options, $mutator);
     }
 
     /**
      *
      */
-    public function replace()
+    public function replace($remote = 'local', $name = '', $options = [], $mutator = null)
     {
+        return $this->query($remote.':'.$this->endpoint.'/'.$name, 'PUT', $options, $mutator);
     }
 
     /**
      *
      */
-    public function update()
+    public function update($remote = 'local', $name = '', $options = [], $mutator = null)
     {
+        return $this->query($remote.':'.$this->endpoint.'/'.$name, 'PATCH', $options, $mutator);
     }
 
     /**
      *
      */
-    public function rename()
+    public function rename($remote = 'local', $name = '', $newName = '', $mutator = null)
     {
+        return $this->query($remote.':'.$this->endpoint.'/'.$name, 'POST', ['name' => $newName], $mutator);
     }
-    
+
     /**
      *
      */
-    public function delete()
+    public function delete($remote = 'local', $name = '', $mutator = null)
     {
+        return $this->query($remote.':'.$this->endpoint.'/'.$name, 'DELETE', [], $mutator);
     }
 }

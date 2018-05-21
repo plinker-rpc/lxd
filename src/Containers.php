@@ -39,14 +39,6 @@ class Containers extends Lib\Base
     /**
      *
      */
-    public function list($remote = 'local', $mutator = null)
-    {
-        return $this->query($remote.':'.$this->endpoint, 'GET', [], $mutator);
-    }
-
-    /**
-     *
-     */
     public function getState($remote = 'local', $container = '', $mutator = null)
     {
         return $this->query($remote.':'.$this->endpoint.'/'.$container.'/state', 'GET', [], $mutator);
