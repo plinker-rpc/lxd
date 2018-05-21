@@ -19,12 +19,18 @@ $ composer require plinker/lxd
 
 ## Setup
 
-The webserver user must be able to execute `lxc` commands, so add the user to sudoers file:
+The webserver user must be able to execute `lxc` commands, so add the user to sudoers file under `User privilege specification`:
 
 ```
 # User privilege specification
 root     ALL=(ALL:ALL) ALL
 www-data ALL=(ALL:ALL) NOPASSWD: /usr/bin/lxc
+```
+
+Also add www-data to lxd group:#
+
+```
+sudo usermod --append --groups lxd www-data
 ```
 
 ## Client

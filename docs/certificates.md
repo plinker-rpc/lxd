@@ -12,7 +12,7 @@ List client certificates.
 | mutator      | function      | Mutation function |           |
 
 ``` javascript
-$client->lxc->certificates->list('local');
+$client->lxd->certificates->list('local');
 ```
 
 **Response**
@@ -35,7 +35,7 @@ Add client certificate.
 | mutator      | function      | Mutation function |           |
 
 ``` javascript
-$client->lxc->certificates->add('local', [
+$client->lxd->certificates->add('local', [
     "type" => "client",
     "certificate" => "PEM certificate",
     "name" => "foo",
@@ -64,7 +64,7 @@ Get certificate information.
 | mutator      | function      | Mutation function |           |
 
 ``` javascript
-$client->lxc->certificates->info('local', '33c50480212ea93c0afbb8125c280b1a66445cac64706066ade30851f54cc8bx');
+$client->lxd->certificates->info('local', '33c50480212ea93c0afbb8125c280b1a66445cac64706066ade30851f54cc8bx');
 ```
 
 **Response**
@@ -92,7 +92,7 @@ Replace certificate properties.
 | mutator      | function      | Mutation function |           |
  
 ``` javascript
-$client->lxc->certificates->replace('local', '33c50480212ea93c0afbb8125c280b1a66445cac64706066ade30851f54cc8bx', [
+$client->lxd->certificates->replace('local', '33c50480212ea93c0afbb8125c280b1a66445cac64706066ade30851f54cc8bx', [
     "type" => "client",
     "name" => "bar"
 ]);

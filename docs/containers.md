@@ -13,7 +13,7 @@ List containers on remote.
 
 ``` javascript
 // apply no mutation to the response
-$client->lxc->containers->list('local');
+$client->lxd->containers->list('local');
 
 // strip endpoint from result
 $client->lxd->containers->list('local', function ($result) {
@@ -45,7 +45,7 @@ Get container information.
 | mutator      | function      | Mutation function |           |
 
 ``` javascript
-$client->lxc->containers->info('local', 'my-container');
+$client->lxd->containers->info('local', 'my-container');
 ```
 
 **Response**

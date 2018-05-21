@@ -12,7 +12,7 @@ List image aliases
 | mutator      | function      | Mutation function |           |
 
 ``` javascript
-$client->lxc->images->aliases->list('local');
+$client->lxd->images->aliases->list('local');
 ```
 
 **Response**
@@ -35,7 +35,7 @@ Get image alias information.
 | mutator      | function      | Mutation function |           |
 
 ``` javascript
-$client->lxc->images->aliases->info('local', 'alias-name');
+$client->lxd->images->aliases->info('local', 'alias-name');
 ```
 
 **Response**
@@ -61,7 +61,7 @@ Get image alias information.
 | mutator      | function      | Mutation function |           |
 
 ``` javascript
-$client->lxc->images->aliases->create('local', [
+$client->lxd->images->aliases->create('local', [
     "description" => "The alias description",
     "target" => "<image fingerprint>",
     "name" => "alias-name"
@@ -90,7 +90,7 @@ Replace alias target or description.
 | mutator      | function      | Mutation function |           |
 
 ``` javascript
-$client->lxc->images->aliases->replace('local', 'alias-name', [
+$client->lxd->images->aliases->replace('local', 'alias-name', [
     "description" => "New description",
     "target" => "<image fingerprint>"
 ]);
