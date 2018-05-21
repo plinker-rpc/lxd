@@ -19,8 +19,6 @@
 
 namespace Plinker\Lxd\Containers;
 
-use Plinker\Redbean\RedBean as Model;
-
 class Metadata extends \Plinker\Lxd\Lib\Base
 {
     /*

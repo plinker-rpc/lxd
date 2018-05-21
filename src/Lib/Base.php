@@ -19,8 +19,6 @@
 
 namespace Plinker\Lxd\Lib;
 
-use Plinker\Redbean\RedBean as Model;
-
 class Base
 {
     /*

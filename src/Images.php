@@ -19,8 +19,6 @@
 
 namespace Plinker\Lxd;
 
-use Plinker\Redbean\RedBean as Model;
-
 class Images extends Lib\Base
 {
     /*

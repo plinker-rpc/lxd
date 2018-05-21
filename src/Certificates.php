@@ -19,8 +19,6 @@
 
 namespace Plinker\Lxd;
 
-use Plinker\Redbean\RedBean as Model;
-
 class Certificates extends Lib\Base
 {
     /*
