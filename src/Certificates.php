@@ -21,7 +21,7 @@ namespace Plinker\Lxd;
 
 use Plinker\Redbean\RedBean as Model;
 
-class Containers extends Lib\Base
+class Certificates extends Lib\Base
 {
     /*
      * @var - LXD endpoint (set by base)
@@ -33,7 +33,7 @@ class Containers extends Lib\Base
      */
     public function __construct(array $config = [])
     {
-        parent::__construct($config, '/1.0/containers');
+        parent::__construct($config, '/1.0/certificates');
     }
 
     /**

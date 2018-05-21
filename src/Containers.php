@@ -21,19 +21,19 @@ namespace Plinker\Lxd;
 
 use Plinker\Redbean\RedBean as Model;
 
-class Certificates extends Lib\Base
+class Containers extends Lib\Base
 {
     /*
      * @var - LXD endpoint (set by base)
      */
     public $endpoint;
-    
+
     /**
      *
      */
     public function __construct(array $config = [])
     {
-        parent::__construct($config, '/1.0/certificates');
+        parent::__construct($config, '/1.0/containers');
     }
 
     /**
@@ -42,5 +42,69 @@ class Certificates extends Lib\Base
     public function list($remote = 'local', $mutator = null)
     {
         return $this->query($remote.':'.$this->endpoint, 'GET', [], $mutator);
+    }
+
+    /**
+     *
+     */
+    public function getState($remote = 'local', $container = '', $mutator = null)
+    {
+        return $this->query($remote.':'.$this->endpoint.'/'.$container.'/state', 'GET', [], $mutator);
+    }
+
+    /**
+     *
+     */
+    public function setState($remote = 'local', $container = '', $options = [], $mutator = null)
+    {
+        return $this->query($remote.':'.$this->endpoint.'/'.$container.'/state', 'PUT', $options, $mutator);
+    }
+
+    /**
+     *
+     */
+    public function start($remote = 'local', $container = '', $mutator = null)
+    {
+        return $this->setState($remote, $container, ['action' => 'start', 'timeout' => 30], $mutator);
+    }
+
+    /**
+     *
+     */
+    public function stop($remote = 'local', $container = '', $mutator = null)
+    {
+        return $this->setState($remote, $container, ['action' => 'stop', 'timeout' => 30], $mutator);
+    }
+
+    /**
+     *
+     */
+    public function restart($remote = 'local', $container = '', $mutator = null)
+    {
+        return $this->setState($remote, $container, ['action' => 'restart', 'timeout' => 30], $mutator);
+    }
+
+    /**
+     *
+     */
+    public function freeze($remote = 'local', $container = '', $mutator = null)
+    {
+        return $this->setState($remote, $container, ['action' => 'freeze', 'timeout' => 30], $mutator);
+    }
+
+    /**
+     *
+     */
+    public function unfreeze($remote = 'local', $container = '', $mutator = null)
+    {
+        return $this->setState($remote, $container, ['action' => 'unfreeze', 'timeout' => 30], $mutator);
+    }
+    
+    /**
+     *
+     */
+    public function exec($remote = 'local', $container = '', $options = [], $mutator = null)
+    {
+        return $this->query($remote.':'.$this->endpoint.'/'.$container.'/exec', 'POST', $options, $mutator);
     }
 }
