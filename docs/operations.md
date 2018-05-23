@@ -87,7 +87,7 @@ Array
 
 ### List & Info Example
 
-If your going to list/display opperations in a table, you might call both methods like the following using a mutator:
+If your going to list/display operations in a table, you might call both methods like the following using a mutator:
 
 ``` php
 $client->lxd->operations->list('local', function ($result) use ($client) {
