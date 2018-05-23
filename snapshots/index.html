@@ -586,15 +586,7 @@
 </tr>
 </tbody>
 </table>
-<div class="codehilite"><pre><span></span><span class="x">lxc.containers.snapshots.list(&#39;local&#39;, &#39;my-container&#39;).then(response =&gt; {</span>
-<span class="x">    console.log(response)</span>
-<span class="x">})</span>
-
-<span class="x">// or apply stripEndpoint on response</span>
-<span class="x">lxc.containers.snapshots.list(&#39;local&#39;, &#39;my-container&#39;, response =&gt; lxc.containers.snapshots.stripEndpoint(response)).then(response =&gt; {</span>
-<span class="x">    // [ &#39;my-snapshot&#39; ]</span>
-<span class="x">    console.log(response)</span>
-<span class="x">})</span>
+<div class="codehilite"><pre><span></span><span class="x">$client-&gt;lxd-&gt;containers-&gt;snapshots-&gt;list(&#39;local&#39;, &#39;my-container&#39;);</span>
 </pre></div>
 
 
@@ -644,9 +636,7 @@
 </tr>
 </tbody>
 </table>
-<div class="codehilite"><pre><span></span><span class="x">lxc.containers.snapshots.info(&#39;local&#39;, &#39;my-container&#39;, &#39;my-container (April 10, 2018 6:53 PM)&#39;).then(response =&gt; {</span>
-<span class="x">    console.log(response)</span>
-<span class="x">})</span>
+<div class="codehilite"><pre><span></span><span class="x">$client-&gt;lxd-&gt;containers-&gt;snapshots-&gt;info(&#39;local&#39;, &#39;my-container&#39;, &#39;my-container (April 10, 2018 6:53 PM)&#39;);</span>
 </pre></div>
 
 
@@ -762,12 +752,10 @@
 </tr>
 </tbody>
 </table>
-<div class="codehilite"><pre><span></span><span class="x">lxc.containers.snapshots.create(&#39;local&#39;, &#39;my-container&#39;, {</span>
-<span class="x">    &quot;name&quot;: &quot;my-snapshot&quot;,</span>
-<span class="x">    &quot;stateful&quot;: true</span>
-<span class="x">}).then(response =&gt; {</span>
-<span class="x">    console.log(response)</span>
-<span class="x">})</span>
+<div class="codehilite"><pre><span></span><span class="x">$client-&gt;lxd-&gt;containers-&gt;snapshots-&gt;create(&#39;local&#39;, &#39;my-container&#39;, [</span>
+<span class="x">    &quot;name&quot; =&gt; &quot;my-snapshot&quot;,</span>
+<span class="x">    &quot;stateful&quot; =&gt; true</span>
+<span class="x">]);</span>
 </pre></div>
 
 
@@ -837,9 +825,7 @@
 </tr>
 </tbody>
 </table>
-<div class="codehilite"><pre><span></span><span class="x">lxc.containers.snapshots.rename(&#39;local&#39;, &#39;my-container&#39;, &#39;my-snapshot-name&#39;, &#39;new-snapshot-name&#39;).then(response =&gt; {</span>
-<span class="x">    console.log(response)</span>
-<span class="x">})</span>
+<div class="codehilite"><pre><span></span><span class="x">$client-&gt;lxd-&gt;containers-&gt;snapshots-&gt;rename(&#39;local&#39;, &#39;my-container&#39;, &#39;my-snapshot-name&#39;, &#39;new-snapshot-name&#39;);</span>
 </pre></div>
 
 
@@ -902,9 +888,7 @@
 </tr>
 </tbody>
 </table>
-<div class="codehilite"><pre><span></span><span class="x">lxc.containers.snapshots.delete(&#39;local&#39;, &#39;my-container&#39;, &#39;my-snapshot-name&#39;).then(response =&gt; {</span>
-<span class="x">    console.log(response)</span>
-<span class="x">})</span>
+<div class="codehilite"><pre><span></span><span class="x">$client-&gt;lxd-&gt;containers-&gt;snapshots-&gt;delete(&#39;local&#39;, &#39;my-container&#39;, &#39;my-snapshot-name&#39;);</span>
 </pre></div>
 
 
@@ -965,9 +949,7 @@
 </tr>
 </tbody>
 </table>
-<div class="codehilite"><pre><span></span><span class="x">lxc.containers.snapshots.restore(&#39;local&#39;, &#39;my-container&#39;, &#39;my-snapshot-name&#39;).then(response =&gt; {</span>
-<span class="x">    console.log(response)</span>
-<span class="x">})</span>
+<div class="codehilite"><pre><span></span><span class="x">$client-&gt;lxd-&gt;containers-&gt;snapshots-&gt;restore(&#39;local&#39;, &#39;my-container&#39;, &#39;my-snapshot-name&#39;);</span>
 </pre></div>
 
 
