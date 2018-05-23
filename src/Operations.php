@@ -33,12 +33,4 @@ class Operations extends Lib\Base
     {
         parent::__construct($config, '/1.0/operations');
     }
-
-    /**
-     *
-     */
-    public function list($remote = 'local', $mutator = null)
-    {
-        return $this->query($remote.':'.$this->endpoint, 'GET', [], $mutator);
-    }
 }
