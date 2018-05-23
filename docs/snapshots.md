@@ -13,15 +13,7 @@ List container snapshots.
 | mutator      | function      | Mutation function |           |
 
 ``` php
-lxc.containers.snapshots.list('local', 'my-container').then(response => {
-    console.log(response)
-})
-
-// or apply stripEndpoint on response
-lxc.containers.snapshots.list('local', 'my-container', response => lxc.containers.snapshots.stripEndpoint(response)).then(response => {
-    // [ 'my-snapshot' ]
-    console.log(response)
-})
+$client->lxd->containers->snapshots->list('local', 'my-container');
 ```
 
 **Response**
@@ -45,9 +37,7 @@ Get container snapshot information.
 | mutator      | function      | Mutation function |           |
 
 ``` php
-lxc.containers.snapshots.info('local', 'my-container', 'my-container (April 10, 2018 6:53 PM)').then(response => {
-    console.log(response)
-})
+$client->lxd->containers->snapshots->info('local', 'my-container', 'my-container (April 10, 2018 6:53 PM)');
 ```
 
 **Response**
@@ -137,12 +127,10 @@ Create container snapshot.
 | mutator      | function      | Mutation function |           |
  
 ``` php
-lxc.containers.snapshots.create('local', 'my-container', {
-    "name": "my-snapshot",
-    "stateful": true
-}).then(response => {
-    console.log(response)
-})
+$client->lxd->containers->snapshots->create('local', 'my-container', [
+    "name" => "my-snapshot",
+    "stateful" => true
+]);
 ```
 
 **Response**
@@ -181,9 +169,7 @@ Rename container snapshot.
 | mutator      | function      | Mutation function |           |
 
 ``` php
-lxc.containers.snapshots.rename('local', 'my-container', 'my-snapshot-name', 'new-snapshot-name').then(response => {
-    console.log(response)
-})
+$client->lxd->containers->snapshots->rename('local', 'my-container', 'my-snapshot-name', 'new-snapshot-name');
 ```
 
 **Response**
@@ -220,9 +206,7 @@ Delete container snapshot.
 | mutator      | function      | Mutation function |           |
 
 ``` php
-lxc.containers.snapshots.delete('local', 'my-container', 'my-snapshot-name').then(response => {
-    console.log(response)
-})
+$client->lxd->containers->snapshots->delete('local', 'my-container', 'my-snapshot-name');
 ```
 
 **Response**
@@ -257,9 +241,7 @@ Restore container snapshot.
 | mutator      | function      | Mutation function |           |
 
 ``` php
-lxc.containers.snapshots.restore('local', 'my-container', 'my-snapshot-name').then(response => {
-    console.log(response)
-})
+$client->lxd->containers->snapshots->restore('local', 'my-container', 'my-snapshot-name');
 ```
 
 **Response**

@@ -41,4 +41,44 @@ class Snapshots extends \Plinker\Lxd\Lib\Base
     {
         return $this->query($remote.':'.$this->endpoint.'/'.$container.'/snapshots', 'GET', [], $mutator);
     }
+
+    /**
+     *
+     */
+    public function info($remote = 'local', $container = '', $name = '', $mutator = null)
+    {
+        return $this->query($remote.':'.$this->endpoint.'/'.$container.'/snapshots/'.$name, 'GET', [], $mutator);
+    }
+    
+    /**
+     *
+     */
+    public function create($remote = 'local', $container = '', $options = [], $mutator = null)
+    {
+        return $this->query($remote.':'.$this->endpoint.'/'.$container.'/snapshots', 'POST', $options, $mutator);
+    }
+
+    /**
+     *
+     */
+    public function rename($remote = 'local', $container = '', $name = '', $newName = '', $mutator = null)
+    {
+        return $this->query($remote.':'.$this->endpoint.'/'.$container.'/snapshots/'.$name, 'POST', ['name' => $newName], $mutator);
+    }
+
+    /**
+     *
+     */
+    public function delete($remote = 'local', $container = '', $name = '', $mutator = null)
+    {
+        return $this->query($remote.':'.$this->endpoint.'/'.$container.'/snapshots/'.$name, 'DELETE', [], $mutator);
+    }
+    
+    /**
+     *
+     */
+    public function restore($remote = 'local', $container = '', $name = '', $mutator = null)
+    {
+        return $this->query($remote.':'.$this->endpoint.'/'.$container, 'PUT', ['restore' => $name], $mutator);
+    }
 }
