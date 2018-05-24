@@ -126,10 +126,10 @@ class Base
         // cmd executed successfully, decode json into an array or return as-is
         if ($status_code === 0) {
             try {
-                $output = implode("\n", $output);
+                $output = implode(PHP_EOL, $output);
                 $return = $this->json_validate($output, true);
             } catch (\Exception $e) {
-                return $output;
+                $return = $output;
             }
             
             // run mutation if not null
@@ -153,10 +153,10 @@ class Base
         // cmd executed successfully, decode json into an array or return as-is
         if ($status_code === 0) {
             try {
-                $output = implode("\n", $output);
+                $output = implode(PHP_EOL, $output);
                 $return = $this->json_validate($output, true);
             } catch (\Exception $e) {
-                return $output;
+                $return = $output;
             }
             
             // run mutation if not null

@@ -37,8 +37,16 @@ class Images extends Lib\Base
     /**
      *
      */
-    public function list($remote = 'local', $mutator = null)
+    public function remotes($mutator = null)
     {
-        return $this->query($remote.':'.$this->endpoint, 'GET', [], $mutator);
+        return $this->local('lxc remote list | tail -n +4 | awk \'{print $2}\' | egrep -v \'^(\\||^$)\'', $mutator);
+    }
+
+    /**
+     *
+     */
+    public function list($remote = 'local', $filter = null, $mutator = null)
+    {
+        return $this->local('lxc image list '.escapeshellarg($remote).': '.$filter.' --format=json', $mutator);
     }
 }
