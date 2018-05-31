@@ -24,7 +24,7 @@ The webserver user must be able to execute `lxc` commands, so add the user to su
 ```
 # User privilege specification
 root     ALL=(ALL:ALL) ALL
-www-data ALL=(ALL:ALL) NOPASSWD: /usr/bin/lxc
+www-data ALL=(ALL:ALL) NOPASSWD: /snap/bin/lxc
 ```
 
 Also add www-data to lxd group:#
@@ -50,12 +50,15 @@ Creating a client instance is done as follows:
     $client = new \Plinker\Core\Client(
         'http://example.com/server.php',
         [
-            'secret' => 'a secret password'
+            'secret' => 'a secret password',
+            'lxc_path' => '/snap/bin'
         ]
     );
     
     // or using global function
-    $client = plinker_client('http://example.com/server.php', 'a secret password');
+    $client = plinker_client('http://example.com/server.php', 'a secret password', [
+        'lxc_path' => '/snap/bin'
+    ]);
     
 ## Basic Usage
 

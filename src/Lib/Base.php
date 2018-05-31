@@ -38,6 +38,11 @@ class Base
     {
         // set config
         $this->config = $config;
+  
+        // check lxc path or revert to default
+        if (empty($this->config['lxc_path'])) {
+            $this->config['lxc_path'] = '/snap/bin';
+        }
 
         // set endpoint
         $this->endpoint = $endpoint;
@@ -121,7 +126,7 @@ class Base
             $data = '';
         }
         
-        exec("sudo /usr/bin/lxc query -X $action $data $remote", $output, $status_code);
+        exec("sudo ".$this->config['lxc_path']."/lxc query -X $action $data $remote", $output, $status_code);
         
         // cmd executed successfully, decode json into an array or return as-is
         if ($status_code === 0) {
@@ -140,7 +145,7 @@ class Base
             return $return;
         }
         
-        throw new \Exception("Could not execute: sudo /usr/bin/lxc query -X $action $data $remote", $status_code);
+        throw new \Exception("Could not execute: sudo ".$this->config['lxc_path']."/lxc query -X $action $data $remote", $status_code);
     }
     
     /**
@@ -148,7 +153,7 @@ class Base
      */
     public function local($cmd = '', $mutator = null)
     {
-        exec("sudo /usr/bin/$cmd", $output, $status_code);
+        exec("sudo ".$this->config['lxc_path']."/$cmd", $output, $status_code);
         
         // cmd executed successfully, decode json into an array or return as-is
         if ($status_code === 0) {
@@ -167,7 +172,7 @@ class Base
             return $return;
         }
         
-        throw new \Exception("Could not execute: sudo /usr/bin/$cmd", $status_code);
+        throw new \Exception("Could not execute: sudo ".$this->config['lxc_path']."/".$cmd, $status_code);
     }
     
     /**
