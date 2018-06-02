@@ -12,16 +12,17 @@ List profiles.
 | mutator      | function      | Mutation function |           |
 
 ``` php
-lxc.profiles.list('local').then(response => {
-    console.log(response)
-})
+$client->lxd->profiles->list('local', function ($result) {
+    return str_replace('/1.0/profiles/', '', $result);
+});
 ```
 
 **Response**
-``` json
-[
-    "/1.0/profiles/default"
-]
+``` text
+Array
+(
+    [0] => default
+)
 ```
 
 ## Info
@@ -37,35 +38,44 @@ Get profile information.
 | mutator      | function      | Mutation function |           |
 
 ``` php
-lxc.profiles.info('local', 'default').then(response => {
-    console.log(response)
-})
+$client->lxd->profiles->info('local', 'default');
 ```
 
 **Response**
  
-``` json
-{
-    "config": {},
-    "description": "Default LXD profile",
-    "devices": {
-        "eth0": {
-            "name": "eth0",
-            "nictype": "bridged",
-            "parent": "lxdbr0",
-            "type": "nic"
-        },
-        "root": {
-            "path": "/",
-            "pool": "default",
-            "type": "disk"
-        }
-    },
-    "name": "default",
-    "used_by": [
-        "/1.0/containers/my-container"
-    ]
-}
+``` text
+Array
+(
+    [config] => Array
+        (
+        )
+
+    [description] => Default LXD profile
+    [devices] => Array
+        (
+            [eth0] => Array
+                (
+                    [name] => eth0
+                    [nictype] => bridged
+                    [parent] => lxdbr0
+                    [type] => nic
+                )
+
+            [root] => Array
+                (
+                    [path] => /
+                    [pool] => default
+                    [type] => disk
+                )
+
+        )
+
+    [name] => default
+    [used_by] => Array
+        (
+        )
+
+)
 ```
 
 ## Create
@@ -81,29 +91,25 @@ Create profile.
 | mutator      | function      | Mutation function |           |
 
 ``` php
-lxc.profiles.create('local', {
-    "name": "my-new-profile",
-    "description": "Some informative description string",
-    "config": {
-        "limits.memory": "2GB"
-    },
-    "devices": {
-        "kvm": {
-            "type": "unix-char",
-            "path": "/dev/kvm"
-        }
-    }
-}).then(response => {
-    console.log(response)
-})
+$client->lxd->profiles->create('local', [
+    "name" => "my-new-profile",
+    "description" =>"Some informative description string",
+    "config" => [
+        "limits.memory" => "2GB"
+    ],
+    "devices" => (object) [
+        "kvm" => [
+            "type" => "unix-char",
+            "path" =>  "/dev/kvm"
+        ]
+    ]
+]);
 ```
 
 **Response**
 
-``` json
-{
-    
-}
+``` text
+
 ```
 
 ## Replace
@@ -119,24 +125,22 @@ Replace profile properties, update description, devices and limits.
 | options      | object        | Profile options   |           |
 | mutator      | function      | Mutation function |           |
 
+**Note:** You should make sure `devices` property is an object :/ or your get an error: `Error: json: cannot unmarshal array into Go struct field ProfilesPost.devices of type map[string]map[string]string`
+
 ``` php
-lxc.profiles.replace('local', 'my-new-profile', {
-    "config": {
-        "limits.memory": "4GB"
-    },
-    "description": "Some description string",
-    "devices": {}
-}).then(response => {
-    console.log(response)
-})
+$client->lxd->profiles->replace('local', 'my-new-profile', [
+    "description" =>"Some informative description string",
+    "config" => [
+        "limits.memory" => "4GB"
+    ],
+    "devices" => (object) []
+]);
 ```
 
 **Response**
 
-``` json
-{
-	
-}
+``` text
+
 ```
 
 ## Update
@@ -153,23 +157,18 @@ Update profile properties, update description, devices and limits.
 | mutator      | function      | Mutation function |           |
 
 ``` php
-lxc.profiles.replace('local', 'my-new-profile', {
-    "config": {
-        "limits.memory": "4GB"
-    },
-    "description": "Some description string",
-    "devices": {}
-}).then(response => {
-    console.log(response)
-})
+$client->lxd->profiles->update('local', 'my-new-profile', [
+    "description" =>"Some informative description string",
+    "config" => [
+        "limits.memory" => "3GB"
+    ]
+]);
 ```
 
 **Response**
 
-``` json
-{
-	
-}
+``` text
+
 ```
 
 ## Rename
@@ -186,9 +185,7 @@ Rename a profile.
 | mutator      | function      | Mutation function |           |
 
 ``` php
-lxc.profiles.rename('local', 'old-name', 'new-name').then(response => {
-    console.log(response)
-})
+$client->lxd->profiles->rename('local', 'my-new-profile', 'my-new-profile-1');
 ```
 
 **Response**
@@ -212,9 +209,7 @@ Delete a profile.
 | mutator      | function      | Mutation function |           |
 
 ``` php
-lxc.profiles.delete('local', 'profile-name').then(response => {
-    console.log(response)
-})
+$client->lxd->profiles->delete('local', 'my-new-profile');
 ```
 
 **Response**
