@@ -90,6 +90,8 @@ Create profile.
 | options      | object        | Profile options   |           |
 | mutator      | function      | Mutation function |           |
 
+**Note:** You should make sure `devices` property is an object :/ or your get an error: `Error: json: cannot unmarshal array into Go struct field ProfilesPost.devices of type map[string]map[string]string`
+
 ``` php
 $client->lxd->profiles->create('local', [
     "name" => "my-new-profile",
@@ -155,6 +157,9 @@ Update profile properties, update description, devices and limits.
 | name         | string        | Profile name  |               |
 | options      | object        | Profile options   |           |
 | mutator      | function      | Mutation function |           |
+
+
+**Note:** You should make sure `devices` property is an object :/ or your get an error: `Error: json: cannot unmarshal array into Go struct field ProfilesPost.devices of type map[string]map[string]string`
 
 ``` php
 $client->lxd->profiles->update('local', 'my-new-profile', [
