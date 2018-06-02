@@ -714,6 +714,7 @@
 </tr>
 </tbody>
 </table>
+<p><strong>Note:</strong> You should make sure <code class="codehilite">devices</code> property is an object :/ or your get an error: <code class="codehilite"><span class="n">Error</span><span class="o">:</span> <span class="n">json</span><span class="o">:</span> <span class="n">cannot</span> <span class="n">unmarshal</span> <span class="n">array</span> <span class="n">into</span> <span class="n">Go</span> <span class="n">struct</span> <span class="n">field</span> <span class="n">ProfilesPost</span><span class="o">.</span><span class="na">devices</span> <span class="n">of</span> <span class="n">type</span> <span class="n">map</span><span class="o">[</span><span class="n">string</span><span class="o">]</span><span class="n">map</span><span class="o">[</span><span class="n">string</span><span class="o">]</span><span class="n">string</span></code></p>
 <div class="codehilite"><pre><span></span><span class="x">$client-&gt;lxd-&gt;profiles-&gt;create(&#39;local&#39;, [</span>
 <span class="x">    &quot;name&quot; =&gt; &quot;my-new-profile&quot;,</span>
 <span class="x">    &quot;description&quot; =&gt;&quot;Some informative description string&quot;,</span>
@@ -829,6 +830,7 @@
 </tr>
 </tbody>
 </table>
+<p><strong>Note:</strong> You should make sure <code class="codehilite">devices</code> property is an object :/ or your get an error: <code class="codehilite"><span class="n">Error</span><span class="o">:</span> <span class="n">json</span><span class="o">:</span> <span class="n">cannot</span> <span class="n">unmarshal</span> <span class="n">array</span> <span class="n">into</span> <span class="n">Go</span> <span class="n">struct</span> <span class="n">field</span> <span class="n">ProfilesPost</span><span class="o">.</span><span class="na">devices</span> <span class="n">of</span> <span class="n">type</span> <span class="n">map</span><span class="o">[</span><span class="n">string</span><span class="o">]</span><span class="n">map</span><span class="o">[</span><span class="n">string</span><span class="o">]</span><span class="n">string</span></code></p>
 <div class="codehilite"><pre><span></span><span class="x">$client-&gt;lxd-&gt;profiles-&gt;update(&#39;local&#39;, &#39;my-new-profile&#39;, [</span>
 <span class="x">    &quot;description&quot; =&gt;&quot;Some informative description string&quot;,</span>
 <span class="x">    &quot;config&quot; =&gt; [</span>
@@ -887,9 +889,7 @@
 
 
 <p><strong>Response</strong></p>
-<div class="codehilite"><pre><span></span><span class="p">{</span>
-
-<span class="p">}</span>
+<div class="codehilite"><pre><span></span>
 </pre></div>
 
 
@@ -931,9 +931,7 @@
 
 
 <p><strong>Response</strong></p>
-<div class="codehilite"><pre><span></span><span class="p">{</span>
-
-<span class="p">}</span>
+<div class="codehilite"><pre><span></span>
 </pre></div>
                 
                   
