@@ -594,16 +594,17 @@
 </tr>
 </tbody>
 </table>
-<div class="codehilite"><pre><span></span><span class="x">lxc.profiles.list(&#39;local&#39;).then(response =&gt; {</span>
-<span class="x">    console.log(response)</span>
-<span class="x">})</span>
+<div class="codehilite"><pre><span></span><span class="x">$client-&gt;lxd-&gt;profiles-&gt;list(&#39;local&#39;, function ($result) {</span>
+<span class="x">    return str_replace(&#39;/1.0/profiles/&#39;, &#39;&#39;, $result);</span>
+<span class="x">});</span>
 </pre></div>
 
 
 <p><strong>Response</strong></p>
-<div class="codehilite"><pre><span></span><span class="p">[</span>
-    <span class="s2">&quot;/1.0/profiles/default&quot;</span>
-<span class="p">]</span>
+<div class="codehilite"><pre><span></span>Array
+(
+    [0] =&gt; default
+)
 </pre></div>
 
 
@@ -640,34 +641,43 @@
 </tr>
 </tbody>
 </table>
-<div class="codehilite"><pre><span></span><span class="x">lxc.profiles.info(&#39;local&#39;, &#39;default&#39;).then(response =&gt; {</span>
-<span class="x">    console.log(response)</span>
-<span class="x">})</span>
+<div class="codehilite"><pre><span></span><span class="x">$client-&gt;lxd-&gt;profiles-&gt;info(&#39;local&#39;, &#39;default&#39;);</span>
 </pre></div>
 
 
 <p><strong>Response</strong></p>
-<div class="codehilite"><pre><span></span><span class="p">{</span>
-    <span class="nt">&quot;config&quot;</span><span class="p">:</span> <span class="p">{},</span>
-    <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Default LXD profile&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;devices&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="nt">&quot;eth0&quot;</span><span class="p">:</span> <span class="p">{</span>
-            <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;eth0&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;nictype&quot;</span><span class="p">:</span> <span class="s2">&quot;bridged&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;parent&quot;</span><span class="p">:</span> <span class="s2">&quot;lxdbr0&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;nic&quot;</span>
-        <span class="p">},</span>
-        <span class="nt">&quot;root&quot;</span><span class="p">:</span> <span class="p">{</span>
-            <span class="nt">&quot;path&quot;</span><span class="p">:</span> <span class="s2">&quot;/&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;pool&quot;</span><span class="p">:</span> <span class="s2">&quot;default&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;disk&quot;</span>
-        <span class="p">}</span>
-    <span class="p">},</span>
-    <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;default&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;used_by&quot;</span><span class="p">:</span> <span class="p">[</span>
-        <span class="s2">&quot;/1.0/containers/my-container&quot;</span>
-    <span class="p">]</span>
-<span class="p">}</span>
+<div class="codehilite"><pre><span></span>Array
+(
+    [config] =&gt; Array
+        (
+        )
+
+    [description] =&gt; Default LXD profile
+    [devices] =&gt; Array
+        (
+            [eth0] =&gt; Array
+                (
+                    [name] =&gt; eth0
+                    [nictype] =&gt; bridged
+                    [parent] =&gt; lxdbr0
+                    [type] =&gt; nic
+                )
+
+            [root] =&gt; Array
+                (
+                    [path] =&gt; /
+                    [pool] =&gt; default
+                    [type] =&gt; disk
+                )
+
+        )
+
+    [name] =&gt; default
+    [used_by] =&gt; Array
+        (
+        )
+
+)
 </pre></div>
 
 
@@ -704,28 +714,24 @@
 </tr>
 </tbody>
 </table>
-<div class="codehilite"><pre><span></span><span class="x">lxc.profiles.create(&#39;local&#39;, {</span>
-<span class="x">    &quot;name&quot;: &quot;my-new-profile&quot;,</span>
-<span class="x">    &quot;description&quot;: &quot;Some informative description string&quot;,</span>
-<span class="x">    &quot;config&quot;: {</span>
-<span class="x">        &quot;limits.memory&quot;: &quot;2GB&quot;</span>
-<span class="x">    },</span>
-<span class="x">    &quot;devices&quot;: {</span>
-<span class="x">        &quot;kvm&quot;: {</span>
-<span class="x">            &quot;type&quot;: &quot;unix-char&quot;,</span>
-<span class="x">            &quot;path&quot;: &quot;/dev/kvm&quot;</span>
-<span class="x">        }</span>
-<span class="x">    }</span>
-<span class="x">}).then(response =&gt; {</span>
-<span class="x">    console.log(response)</span>
-<span class="x">})</span>
+<div class="codehilite"><pre><span></span><span class="x">$client-&gt;lxd-&gt;profiles-&gt;create(&#39;local&#39;, [</span>
+<span class="x">    &quot;name&quot; =&gt; &quot;my-new-profile&quot;,</span>
+<span class="x">    &quot;description&quot; =&gt;&quot;Some informative description string&quot;,</span>
+<span class="x">    &quot;config&quot; =&gt; [</span>
+<span class="x">        &quot;limits.memory&quot; =&gt; &quot;2GB&quot;</span>
+<span class="x">    ],</span>
+<span class="x">    &quot;devices&quot; =&gt; (object) [</span>
+<span class="x">        &quot;kvm&quot; =&gt; [</span>
+<span class="x">            &quot;type&quot; =&gt; &quot;unix-char&quot;,</span>
+<span class="x">            &quot;path&quot; =&gt;  &quot;/dev/kvm&quot;</span>
+<span class="x">        ]</span>
+<span class="x">    ]</span>
+<span class="x">]);</span>
 </pre></div>
 
 
 <p><strong>Response</strong></p>
-<div class="codehilite"><pre><span></span><span class="p">{</span>
-
-<span class="p">}</span>
+<div class="codehilite"><pre><span></span>
 </pre></div>
 
 
@@ -768,22 +774,19 @@
 </tr>
 </tbody>
 </table>
-<div class="codehilite"><pre><span></span><span class="x">lxc.profiles.replace(&#39;local&#39;, &#39;my-new-profile&#39;, {</span>
-<span class="x">    &quot;config&quot;: {</span>
-<span class="x">        &quot;limits.memory&quot;: &quot;4GB&quot;</span>
-<span class="x">    },</span>
-<span class="x">    &quot;description&quot;: &quot;Some description string&quot;,</span>
-<span class="x">    &quot;devices&quot;: {}</span>
-<span class="x">}).then(response =&gt; {</span>
-<span class="x">    console.log(response)</span>
-<span class="x">})</span>
+<p><strong>Note:</strong> You should make sure <code class="codehilite">devices</code> property is an object :/ or your get an error: <code class="codehilite"><span class="n">Error</span><span class="o">:</span> <span class="n">json</span><span class="o">:</span> <span class="n">cannot</span> <span class="n">unmarshal</span> <span class="n">array</span> <span class="n">into</span> <span class="n">Go</span> <span class="n">struct</span> <span class="n">field</span> <span class="n">ProfilesPost</span><span class="o">.</span><span class="na">devices</span> <span class="n">of</span> <span class="n">type</span> <span class="n">map</span><span class="o">[</span><span class="n">string</span><span class="o">]</span><span class="n">map</span><span class="o">[</span><span class="n">string</span><span class="o">]</span><span class="n">string</span></code></p>
+<div class="codehilite"><pre><span></span><span class="x">$client-&gt;lxd-&gt;profiles-&gt;replace(&#39;local&#39;, &#39;my-new-profile&#39;, [</span>
+<span class="x">    &quot;description&quot; =&gt;&quot;Some informative description string&quot;,</span>
+<span class="x">    &quot;config&quot; =&gt; [</span>
+<span class="x">        &quot;limits.memory&quot; =&gt; &quot;4GB&quot;</span>
+<span class="x">    ],</span>
+<span class="x">    &quot;devices&quot; =&gt; (object) []</span>
+<span class="x">]);</span>
 </pre></div>
 
 
 <p><strong>Response</strong></p>
-<div class="codehilite"><pre><span></span><span class="p">{</span>
-
-<span class="p">}</span>
+<div class="codehilite"><pre><span></span>
 </pre></div>
 
 
@@ -826,22 +829,17 @@
 </tr>
 </tbody>
 </table>
-<div class="codehilite"><pre><span></span><span class="x">lxc.profiles.replace(&#39;local&#39;, &#39;my-new-profile&#39;, {</span>
-<span class="x">    &quot;config&quot;: {</span>
-<span class="x">        &quot;limits.memory&quot;: &quot;4GB&quot;</span>
-<span class="x">    },</span>
-<span class="x">    &quot;description&quot;: &quot;Some description string&quot;,</span>
-<span class="x">    &quot;devices&quot;: {}</span>
-<span class="x">}).then(response =&gt; {</span>
-<span class="x">    console.log(response)</span>
-<span class="x">})</span>
+<div class="codehilite"><pre><span></span><span class="x">$client-&gt;lxd-&gt;profiles-&gt;update(&#39;local&#39;, &#39;my-new-profile&#39;, [</span>
+<span class="x">    &quot;description&quot; =&gt;&quot;Some informative description string&quot;,</span>
+<span class="x">    &quot;config&quot; =&gt; [</span>
+<span class="x">        &quot;limits.memory&quot; =&gt; &quot;3GB&quot;</span>
+<span class="x">    ]</span>
+<span class="x">]);</span>
 </pre></div>
 
 
 <p><strong>Response</strong></p>
-<div class="codehilite"><pre><span></span><span class="p">{</span>
-
-<span class="p">}</span>
+<div class="codehilite"><pre><span></span>
 </pre></div>
 
 
@@ -884,9 +882,7 @@
 </tr>
 </tbody>
 </table>
-<div class="codehilite"><pre><span></span><span class="x">lxc.profiles.rename(&#39;local&#39;, &#39;old-name&#39;, &#39;new-name&#39;).then(response =&gt; {</span>
-<span class="x">    console.log(response)</span>
-<span class="x">})</span>
+<div class="codehilite"><pre><span></span><span class="x">$client-&gt;lxd-&gt;profiles-&gt;rename(&#39;local&#39;, &#39;my-new-profile&#39;, &#39;my-new-profile-1&#39;);</span>
 </pre></div>
 
 
@@ -930,9 +926,7 @@
 </tr>
 </tbody>
 </table>
-<div class="codehilite"><pre><span></span><span class="x">lxc.profiles.delete(&#39;local&#39;, &#39;profile-name&#39;).then(response =&gt; {</span>
-<span class="x">    console.log(response)</span>
-<span class="x">})</span>
+<div class="codehilite"><pre><span></span><span class="x">$client-&gt;lxd-&gt;profiles-&gt;delete(&#39;local&#39;, &#39;my-new-profile&#39;);</span>
 </pre></div>
 
 
