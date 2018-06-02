@@ -195,10 +195,8 @@ $client->lxd->profiles->rename('local', 'my-new-profile', 'my-new-profile-1');
 
 **Response**
 
-``` json
-{
-	
-}
+``` text
+
 ```
 
 ## Delete
@@ -219,8 +217,6 @@ $client->lxd->profiles->delete('local', 'my-new-profile');
 
 **Response**
 
-``` json
-{
-	
-}
+``` text
+
 ```
