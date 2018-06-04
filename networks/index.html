@@ -753,7 +753,7 @@
 </tr>
 </tbody>
 </table>
-<div class="codehilite"><pre><span></span><span class="x">$client-&gt;lxd-&gt;networks-&gt;replace(&#39;local&#39;, [</span>
+<div class="codehilite"><pre><span></span><span class="x">$client-&gt;lxd-&gt;networks-&gt;replace(&#39;local&#39;, &#39;my-network&#39;, [</span>
 <span class="x">    &quot;config&quot; =&gt; [</span>
 <span class="x">        &quot;ipv4.address&quot; =&gt; &quot;none&quot;,</span>
 <span class="x">        &quot;ipv6.address&quot; =&gt; &quot;2001:470:b368:4242::1/64&quot;,</span>
@@ -809,7 +809,7 @@
 </tr>
 </tbody>
 </table>
-<div class="codehilite"><pre><span></span><span class="x">$client-&gt;lxd-&gt;networks-&gt;update(&#39;local&#39;, [</span>
+<div class="codehilite"><pre><span></span><span class="x">$client-&gt;lxd-&gt;networks-&gt;update(&#39;local&#39;, &#39;my-network&#39;, [</span>
 <span class="x">    &quot;name&quot; =&gt; &quot;my-network&quot;,</span>
 <span class="x">    &quot;description&quot; =&gt; &quot;My network&quot;,</span>
 <span class="x">    &quot;config&quot; =&gt; [</span>
