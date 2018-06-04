@@ -105,7 +105,7 @@ Replace the network information.
 | mutator      | function      | Mutation function |           |
 
 ``` php
-$client->lxd->networks->replace('local', [
+$client->lxd->networks->replace('local', 'my-network', [
     "config" => [
         "ipv4.address" => "none",
         "ipv6.address" => "2001:470:b368:4242::1/64",
@@ -136,7 +136,7 @@ Update the network information.
 | mutator      | function      | Mutation function |           |
 
 ``` php
-$client->lxd->networks->update('local', [
+$client->lxd->networks->update('local', 'my-network', [
     "name" => "my-network",
     "description" => "My network",
     "config" => [

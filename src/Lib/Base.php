@@ -121,7 +121,7 @@ class Base
         if (!is_array($data)) {
             throw new \Exception('Data argument (3rd param) must be an array');
         } elseif (!empty($data)) {
-            $data = ' -d '.escapeshellarg(json_encode($data));
+            $data = ' -d '.escapeshellarg(json_encode($data, JSON_FORCE_OBJECT));
         } else {
             $data = '';
         }
