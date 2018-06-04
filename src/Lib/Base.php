@@ -121,11 +121,16 @@ class Base
         if (!is_array($data)) {
             throw new \Exception('Data argument (3rd param) must be an array');
         } elseif (!empty($data)) {
-            $data = ' -d '.escapeshellarg(json_encode($data, JSON_FORCE_OBJECT));
+            $data = json_encode($data);
+            
+            // fix devices should be empty object {} not array but FORCE_OBJECT then breaks arrays, like profiles
+            $data = str_replace('"devices":[]', '"devices":{}', $data);
+
+            $data = ' -d '.escapeshellarg($data);
         } else {
             $data = '';
         }
-        
+
         exec("sudo ".$this->config['lxc_path']."/lxc query -X $action $data $remote 2>&1", $output, $status_code);
         
         // cmd executed successfully, decode json into an array or return as-is
