@@ -567,9 +567,9 @@
 </thead>
 <tbody>
 <tr>
-<td>mutator</td>
-<td>function</td>
-<td>Mutation function</td>
+<td></td>
+<td></td>
+<td></td>
 <td></td>
 </tr>
 </tbody>
@@ -579,28 +579,48 @@
 
 
 <p><strong>Response</strong></p>
-<div class="codehilite"><pre><span></span><span class="err">images</span>
-<span class="err">local</span>
-<span class="err">ubuntu</span>
-<span class="err">ubuntu-daily</span>
-</pre></div>
-
-
-<p><strong>As an array:</strong></p>
-<div class="codehilite"><pre><span></span><span class="x">$client-&gt;lxd-&gt;images-&gt;remotes(function ($result) {</span>
-<span class="x">    return explode(PHP_EOL, $result);</span>
-<span class="x">})</span>
-</pre></div>
-
-
-<p><strong>Response</strong></p>
-<div class="codehilite"><pre><span></span><span class="err">Array</span>
-<span class="err">(</span>
-    <span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="err">=&gt;</span> <span class="err">images</span>
-    <span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="err">=&gt;</span> <span class="err">local</span>
-    <span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="err">=&gt;</span> <span class="err">ubuntu</span>
-    <span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="err">=&gt;</span> <span class="err">ubuntu-daily</span>
-<span class="err">)</span>
+<div class="codehilite"><pre><span></span><span class="p">[</span>
+    <span class="p">{</span>
+        <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;host&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;url&quot;</span><span class="p">:</span> <span class="s2">&quot;https:\/\/10.158.250.1:8443&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;protocol&quot;</span><span class="p">:</span> <span class="s2">&quot;lxd&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;auth_type&quot;</span><span class="p">:</span> <span class="s2">&quot;tls&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;public&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;static&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+        <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;images&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;url&quot;</span><span class="p">:</span> <span class="s2">&quot;https:\/\/images.linuxcontainers.org&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;protocol&quot;</span><span class="p">:</span> <span class="s2">&quot;simplestreams&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;auth_type&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;public&quot;</span><span class="p">:</span> <span class="s2">&quot;1&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;static&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+        <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;local&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;url&quot;</span><span class="p">:</span> <span class="s2">&quot;unix:\/\/&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;protocol&quot;</span><span class="p">:</span> <span class="s2">&quot;lxd&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;auth_type&quot;</span><span class="p">:</span> <span class="s2">&quot;tls&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;public&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;static&quot;</span><span class="p">:</span> <span class="s2">&quot;1&quot;</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+        <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;ubuntu&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;url&quot;</span><span class="p">:</span> <span class="s2">&quot;https:\/\/cloud-images.ubuntu.com\/releases&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;protocol&quot;</span><span class="p">:</span> <span class="s2">&quot;simplestreams&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;auth_type&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;public&quot;</span><span class="p">:</span> <span class="s2">&quot;1&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;static&quot;</span><span class="p">:</span> <span class="s2">&quot;1&quot;</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+        <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;ubuntu-daily&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;url&quot;</span><span class="p">:</span> <span class="s2">&quot;https:\/\/cloud-images.ubuntu.com\/daily&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;protocol&quot;</span><span class="p">:</span> <span class="s2">&quot;simplestreams&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;auth_type&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;public&quot;</span><span class="p">:</span> <span class="s2">&quot;1&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;static&quot;</span><span class="p">:</span> <span class="s2">&quot;1&quot;</span>
+    <span class="p">}</span>
+<span class="p">]</span>
 </pre></div>
 
 
