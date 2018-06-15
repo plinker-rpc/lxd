@@ -8,7 +8,6 @@ List image remotes.
 
 | Parameter    | Type          | Description   | Default       |
 | ----------   | ------------- | ------------- | ------------- | 
-| mutator      | function      | Mutation function |           |
 
 ``` php
 $client->lxd->images->remotes();
@@ -16,29 +15,48 @@ $client->lxd->images->remotes();
 
 **Response**
 ``` json
-images
-local
-ubuntu
-ubuntu-daily
-```
-
-**As an array:**
-
-``` php
-$client->lxd->images->remotes(function ($result) {
-    return explode(PHP_EOL, $result);
-})
-```
-
-**Response**
-``` json
-Array
-(
-    [0] => images
-    [1] => local
-    [2] => ubuntu
-    [3] => ubuntu-daily
-)
+[
+    {
+        "name": "host",
+        "url": "https:\/\/10.158.250.1:8443",
+        "protocol": "lxd",
+        "auth_type": "tls",
+        "public": "",
+        "static": ""
+    },
+    {
+        "name": "images",
+        "url": "https:\/\/images.linuxcontainers.org",
+        "protocol": "simplestreams",
+        "auth_type": "",
+        "public": "1",
+        "static": ""
+    },
+    {
+        "name": "local",
+        "url": "unix:\/\/",
+        "protocol": "lxd",
+        "auth_type": "tls",
+        "public": "",
+        "static": "1"
+    },
+    {
+        "name": "ubuntu",
+        "url": "https:\/\/cloud-images.ubuntu.com\/releases",
+        "protocol": "simplestreams",
+        "auth_type": "",
+        "public": "1",
+        "static": "1"
+    },
+    {
+        "name": "ubuntu-daily",
+        "url": "https:\/\/cloud-images.ubuntu.com\/daily",
+        "protocol": "simplestreams",
+        "auth_type": "",
+        "public": "1",
+        "static": "1"
+    }
+]
 ```
 
 ## List
