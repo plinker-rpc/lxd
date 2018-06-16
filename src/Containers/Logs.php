@@ -37,10 +37,24 @@ class Logs extends \Plinker\Lxd\Lib\Base
     /**
      *
      */
-     /*
     public function list($remote = 'local', $container = '', $mutator = null)
     {
-        return $this->query($remote.':'.$this->endpoint.'/'.$container.'/snapshots', 'GET', [], $mutator);
+        return $this->query($remote.':'.$this->endpoint.'/'.$container.'/logs', 'GET', [], $mutator);
     }
-    */
+    
+    /**
+     *
+     */
+    public function get($remote = 'local', $container = '', $file ='', $mutator = null)
+    {
+        return $this->query($remote.':'.$this->endpoint.'/'.$container.'/logs/'.$file, 'GET', [], $mutator);
+    }
+        
+    /**
+     *
+     */
+    public function remove($remote = 'local', $container = '', $file ='', $mutator = null)
+    {
+        return $this->query($remote.':'.$this->endpoint.'/'.$container.'/logs/'.$file, 'DELETE', [], $mutator);
+    }
 }

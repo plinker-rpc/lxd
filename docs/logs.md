@@ -66,7 +66,7 @@ Delete a particular log file.
 | mutator      | function      | Mutation function |           |
 
 ``` php
-$client->lxd->containers->logs->delete('local', 'my-container', 'lxc.conf');
+$client->lxd->containers->logs->remove('local', 'my-container', 'lxc.conf');
 ```
 
 **Response**
