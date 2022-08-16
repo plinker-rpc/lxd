@@ -65,7 +65,7 @@ Essentially you can do any LXD operation with the single `$client->lxd->query()`
 
 | Parameter    | Type          | Description   | Default                     |
 | ----------   | ------------- | ------------- | -------------               | 
-| remote       | string        | LXD remote and endpoint            | local |
+| remote       | string        | LXD remote and endpoint            | local  |
 | rest method  | string        | e.g GET, POST, DELETE, PUT, PATCH  | GET    |
 | payload      | object \| json string | Rest json payload          |        |
 | mutator      | function      | Pre-resolve mutation function      |        |
